@@ -21,7 +21,7 @@ class UserModel extends AndreModel{
 	}
 	public function rawquerys(){
 
-		$result=$this->query('select* from users');
+		$result=$this->query('array','select* from users');
 
 		return $result;
 

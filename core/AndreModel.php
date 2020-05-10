@@ -121,7 +121,7 @@ class AndreModel extends DbConn{
 			return $sql.' ;';	
 	}
 
-function query_array($query){
+function query($type,$query){
 	
    	
 
@@ -130,9 +130,15 @@ function query_array($query){
 
   $result = $this->connection->query($sql);
   if($result){
+  if ($type="object"){
   while($row=mysqli_fetch_object($result))
  
   return $row;
+  }}
+  elseif ($type="array"){
+	while($row=mysqli_fetch_array($result))
+
+  return $row;  
   }
   else
   return 'Failed SQL ERROR';
