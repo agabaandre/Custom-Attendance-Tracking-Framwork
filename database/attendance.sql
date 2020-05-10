@@ -5801,12 +5801,8 @@ CREATE TABLE `rosta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rosta`
--
+-- Create table `schedules`
 --
--- Table structure for table `schedules`
---
-
 CREATE TABLE `schedules` (
   `schedule_id` int(11) NOT NULL,
   `schedule` varchar(100) NOT NULL,
