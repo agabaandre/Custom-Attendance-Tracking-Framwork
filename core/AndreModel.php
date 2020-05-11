@@ -26,7 +26,8 @@ class AndreModel extends DbConn{
 		  $sql=rtrim($sql,',');
 		  $sql.=')';
 		  $sql=$this->appendSemicolon($sql);
-	      $result = $this->connection->query($sql);
+		  $result = $this->connection->query($sql);
+		//   echo $sql;
 		if($result)
 			return $result;
 		else

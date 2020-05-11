@@ -1,9 +1,14 @@
+<script>
+$("#alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#alert").slideUp(500);
+});
+</script>
 <div class="col-md-12">
 
 <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
 				  
-				  <li class=""><a href="dashboard.php?action=manage_departments">Manage Departments</a></li>					  
+				  <li class=""><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments">Manage Departments</a></li>					  
                  </ul>
 				</div>
                                
@@ -18,118 +23,63 @@
                                               <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Add Department</center></h4>
                                           </div>
+                                   
                                           <div class="modal-body">
                                               
-     <form action="" method="post" enctype="multipart/form-data" >
+     <form action="<?php echo base_url();?>index.php/Employee/addData/departments/manage_departments" method="post" enctype="multipart/form-data" >
               <label>Department:</label>
-              <input type="text" class="form-control" name="department" value="" style="width:100%;">
+              <input type="text" class="form-control" name="name" value="" style="width:100%;">
               
-<button type="submit" name="add" class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Add Department</button>
+<button type="submit" class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Add Department</button>
 </form>
 
                                          </div>
                                       </div>
                                     </div>
     </div>
-<?php
-if(isset($_POST['delete']))
-		{
-
-$rs_id= $_POST['id'];
-
-
-
-if($rs_id!="")
-
-
-{
-	
-if ($act=mysql_query("Delete from departments where id='$rs_id'")){
-	
-echo $msg='<div class="alert alert-success alert-dismissable">
-                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                   <strong>Deletion Successful</strong>
-                   </div>';
-     }
-     
-		}}
-?>
-<?php if (isset($_POST['update'])){
-
-$rs_id= $_POST['id2'];
-$value= $_POST['department'];
-
-
-
-if($rs_id!="")
-
-
-{
-	
-if ($act=mysql_query("UPDATE `attendance_tracking`.`departments` SET `department` = '$value' WHERE `departments`.`id` ='$rs_id'")){
-	
-echo $msg='<div class="alert alert-success alert-dismissable">
-                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                   <strong>Update Successful</strong>
-                   </div>';
-     }
-     
-}}
-?>
-<?php if (isset($_POST['add'])){
-
-$value= $_POST['department'];
-$count = $db->countOf("departments", "department='$value'");
-		if($count==1)
-			{
-		$msg=" Duplicate Entry! Please Verify</font>";
-		echo'<div class="alert alert-danger alert-dismissable">
-                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                   <strong>'.$msg.'</strong>
-                   </div>';
-			}
-			else
-			{
-	
-if ($act=mysql_query(" INSERT INTO `attendance_tracking`.`departments` (
-`id` ,
-`department`
-)
-VALUES (NULL, 'home')")){
-	
-echo $msg='<div class="alert alert-success alert-dismissable">
-                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                   <strong>Saved Succeefully</strong>
-                   </div>';
-     
-     
-}}}
-?>
+  
 <div class="col-md-12">
+
+<?php
+                                      if(isset($data['msg'])){
+
+                                      echo'<div id="alert" class="alert alert-success alert-dismissable">
+                                      <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                      <strong>'.$data['msg'].'</strong>
+                                      </div>';
+                                            }
+  ?>
 <hr style="border:1px solid rgb(140, 141, 137);"/>
 	 <table id="mydata" class="table table-bordered table-responsive">
                     <thead>
                       <tr>
+              <th>#</th>
 					   <th>department</th>
-						
+           
 						<th>Edit / Delete</th>
 						
                       </tr>
                     </thead>
                     <tbody>
 					<?php 
-					$sql="SELECT * FROM departments";
-					$result = mysql_query($sql);
-					while($row = mysql_fetch_array($result)) 
-                   {
+				   
+          
+        //  print_r($data);
+          $i=1;
+          foreach($data['dbset'] as $row){
+              
                     ?>
                     <tr>
-					   <td><?php echo $row['department'];?></td>
+                  
+
+                    <td><?php echo $i++;?></td>
+            <td><?php echo $row['name'];?></td>
+					   
                        
                        <td>
 	<button data-toggle="modal" data-target="#<?php echo $modalid='my'.$row['id'];?>" title="Update department Details" class="btn btn-sm btn-info"><i class="edit"></i>Edit</button>
-	<form action="" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
-	<button  type="submit" name="delete" title="On click, this record will be deleted!" class="btn btn-sm btn-danger" style="float:left;"><i class="delete"></i>Delete</button>		           
+	<form action="<?php echo base_url();?>index.php/Employee/deleteData/departments/manage_departments" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
+	<!-- <button  type="submit" title="On click, this record will be deleted!" class="btn btn-sm btn-danger" style="float:left;"><i class="delete"></i>Delete</button>		            -->
 	</form>
 			<div class="modal fade" id="<?php echo $modalid;?>" tabindex="-1" role="dialog" data-backdrop="static">
                                     <div class="modal-dialog">
@@ -140,11 +90,11 @@ echo $msg='<div class="alert alert-success alert-dismissable">
                                           </div>
                                           <div class="modal-body">
                                               
-              <form action="" method="post" enctype="multipart/form-data" >
+              <form action="<?php echo base_url();?>index.php/Employee/addData/departments/manage_departments" method="post" enctype="multipart/form-data" >
               <label>Department:</label>
-              <input type="text" class="form-control" name="department" value="<?php echo $row['department'];?>" style="width:100%;">
+              <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" style="width:100%;">
               <input class="form-control" name="id2"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
-<button type="submit" name="update" class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update Department</button>
+<button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update Department</button>
 </form>
 
                                          </div>

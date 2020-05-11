@@ -22,20 +22,38 @@ class EmployeeModel extends AndreModel{
     }
     function viewEmpoyee($id=FALSE){
 
-		return $this->get('object','select* from employee_details where employee.id=$id');
+		return $this->get('array','select* from employee_details where employee.id=$id');
 	}
-	function deleteEmmployee($id){
+	 function deleteEmmployee($id){
        $query= $this->delete('employee_details',$id);
 
      return $this->notify($query);
     }
+    public function viewData($table){
+      
+    return	$this->get("array","SELECT * FROM `$table`");
 
-    function addImage()
-    {
-       
     }
+
+    function addData($table,$sdata){
+    
+     $query=$this->insert($table,$sdata);
+     if($query)
+    {
+    return 'Success';
+    }
+    }
+    function deleteData($table,$id){
+    
+      $query=$this->delete($table,$id);
+      if($query)
+     {
+     return 'Success';
+     }
+     }
     function getImage()
     {
+    
        
     }
 }

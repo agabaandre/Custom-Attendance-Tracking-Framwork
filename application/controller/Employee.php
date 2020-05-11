@@ -29,8 +29,35 @@ class Employee extends AndreController{
    return	$this->load_view('main',$data);
 
     }
-    
+    //department
+    public function viewData($table,$template){
+        $data['template']=$template;
+        $data['dbset']=$this->EmpData->viewData($table);
+        
+   return	$this->load_view('main',$data);
 
+    }
+    public function addData($table,$template){
+        $sdata=$this->inputpost();
+        $data['template']=$template;
+        $data['msg']=$this->EmpData->addData($table,$sdata);
+        $data['dbset']=$this->EmpData->viewData($table);
+
+      
+        
+   return	$this->load_view('main',$data);
+
+    }
+    public function deleteData($table,$template){
+        $id=$this->inputpost();
+        $data['template']=$template;
+        $data['msg']=$this->EmpData->deleteData($table,$id);
+        $data['dbset']=$this->EmpData->viewData($table);
+        
+   return	$this->load_view('main',$data);
+
+   
+    }
 
 }
 

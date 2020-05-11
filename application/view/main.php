@@ -25,7 +25,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="assets/dist/img/login.png" class="user-image" alt="">
+                  <img src="<?php echo base_url(); ?>assets/dist/img/login.png" class="user-image" alt="">
                   <span class="hidden-xs"><?php echo $_SESSION['name']; ?></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -180,17 +180,17 @@
               </a>
               <ul class="treeview-menu">
               <?php  if  	($_SESSION['usertype'] =='admin')
-		        { echo'<li><a href="?action=users"><i class="fa fa-circle-o"></i>Manage Users</a></li>
-		        <li><a href="?action=jobs"><i class="fa fa-circle-o"></i>Manage Jobs</a></li>
-                <li><a href="?action=departments"><i class="fa fa-circle-o"></i>Manage Departments</a></li>
+		        { ?><li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Users</a></li>
+		        <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Jobs</a></li>
+        <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Departments</a></li>
 				<li><a href="?action=facilities"><i class="fa fa-circle-o"></i>Manage Facilities</a></li>
-				<li><a href="?action=manage_districts"><i class="fa fa-circle-o"></i>Manage Districts</a></li>
-				<li><a href="?action=manage_schedules"><i class="fa fa-circle-o"></i>Manage Schedules</a></li>';
-			    }
-				else{
-                echo'<li><a href="?action=jobs"><i class="fa fa-circle-o"></i>Manage Jobs</a></li>
-                <li><a href="?action=departments"><i class="fa fa-circle-o"></i>Manage Departments</a></li>';
-				}
+				<li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Districts</a></li>
+				<li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Schedules</a></li>';
+			   <?php } 
+				else{ ?>
+                <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Jobs</a></li>
+                <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Departments</a></li>';
+			<?php	}
 				?>
 				
               </ul>

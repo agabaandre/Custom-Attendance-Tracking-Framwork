@@ -15,10 +15,10 @@
 	 <table id="mydata" class="table table-bordered table-hover table-responsive">
                     <thead>
                       <tr>
-					   <th>Emloyee ID</th>
+					   <th>Employee ID</th>
                         <th>National ID</th>
-						<th>Photo</th>							
-						<th>iHRIS ID</th>							
+						<th>Work ID NO</th>
+						<th>Photo</th>											
 						<th>Name</th>
 						<th>Contact</th>
 						<th>Position</th>
@@ -46,7 +46,7 @@
                         <!-- <td><img src="modules/employee_details/getImage.php?id=<?php //echo $row["emp_id"];?>" class="img img-thumbnail" style="width:80px; height:80px;"/></td>
                    
                        -->
-					  <td><img src="images/no_pic.png" href="dashboard.php?action=passport" class="img img-thumbnail" style="width:25px; height:25px;"/></td>';
+					  <td><img src="<?php echo base_url();?>assets/images/no_pic.png" href="dashboard.php?action=passport" class="img img-thumbnail" style="width:25px; height:25px;"/></td>';
                        
                        <td> <?php echo $myname=$row['Surname']." ".$row['Firstname']." ".$row['Othername'];?></td>
                        <td> <?php echo $row['contact'];?></td>
