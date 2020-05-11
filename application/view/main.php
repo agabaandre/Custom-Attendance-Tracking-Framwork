@@ -179,7 +179,7 @@
               </a>
               <ul class="treeview-menu">
               <?php  if  	($_SESSION['usertype'] =='admin')
-		        { ?><li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Users</a></li>
+		        { ?><li><a href="<?php echo base_url();?>index.php/User/getUsers"><i class="fa fa-circle-o"></i>Manage Users</a></li>
 		        <li><a href="<?php echo base_url();?>index.php/Employee/viewData/job/manage_job"><i class="fa fa-circle-o"></i>Manage Jobs</a></li>
         <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Departments</a></li>
 				<li><a href="<?php echo base_url();?>index.php/Employee/viewData/facility/manage_facility"><i class="fa fa-circle-o"></i>Manage Facilities</a></li>

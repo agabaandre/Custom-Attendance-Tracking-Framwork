@@ -4,8 +4,8 @@ include("db_connector/mysqli_conn.php");
 ?>
           <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
-			      <li class="active"><a href="dashboard.php?action=users">Manage Users</a></li>
-			      <li class=""><a href="dashboard.php?action=user_logs">User Logs</a></li>
+			      <li class="active"><a href="<?php echo base_url();?>index.php/User/getUsers">Manage Users</a></li>
+			      <li class=""><a href="<?php echo base_url();?>index.php/User/getLogs">User Logs</a></li>
 				  
                  </ul>
 				</div>
