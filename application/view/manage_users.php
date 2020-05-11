@@ -1,11 +1,10 @@
 <div class="col-md-12" style=" background:white; border-radius: 5px;">
 <?php 
-include("db_connector/mysqli_conn.php");
 ?>
           <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
-			      <li class="active"><a href="<?php echo base_url();?>index.php/User/getUsers">Manage Users</a></li>
-			      <li class=""><a href="<?php echo base_url();?>index.php/User/getLogs">User Logs</a></li>
+			      <li class="active"><a href="<?php echo base_url();?>index.php/Users/getUsers">Manage Users</a></li>
+			      <li class=""><a href="<?php echo base_url();?>index.php/Users/getLogs">User Logs</a></li>
 				  
                  </ul>
 				</div>
@@ -42,13 +41,10 @@ include("db_connector/mysqli_conn.php");
 					  </select>
 				   </div>
 				   <div id="">
-					  <label>Surname: *</label>
+					  <label>Name: *</label>
                       <input type="text" class="form-control" name="lname" id="" value="" placeholder="Surname" type="text"/ required>
 				   </div>
-				   <div id="">
-					  <label>First Name:</label>
-                      <input class="form-control" name="fname" id="" value="" placeholder="Firstname" type="text" required>
-				   </div>
+				   
 			     	   <div id="">
                       <label>District: <span style="color:red">*</span></label> 
                        <select name="district" class="form-control select2">
@@ -111,7 +107,7 @@ include("db_connector/mysqli_conn.php");
       <tr>  <td><?php echo $i++;?></td>
             <td><?php $uuid=$row['uuid'];?><?php echo $row['username'];?></td>
 			<td><?php echo  $active_op=$row['usertype'];?></td>
-			<td><?php echo $row['lname']." ".$row['fname'];?></td>
+			<td><?php echo $row['name'];?></td>
 			<td></td>
 			<td></td>
     

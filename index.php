@@ -5,12 +5,12 @@ if ($_SESSION['uuid']='')
 $this->load_view('login','Logged Out');
 }
 ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 'false'); 
+ini_set('display_errors', 'TRUE'); 
 //helpers
 require('config/helpers.php');
 //controllers
 //Example $array('Auth','User');
-$controllers=array ('Auth','Employee');
+$controllers=array ('Auth','Employee','Users');
 autoload($controllers);
 
 function getArgumentStart($uri){

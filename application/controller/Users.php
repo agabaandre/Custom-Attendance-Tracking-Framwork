@@ -3,7 +3,7 @@
 require_once(__DIR__.'/../model/UserModel.php');
 require_once(__DIR__.'/../../core/AndreController.php');
 
-class Auth extends AndreController{
+class Users extends AndreController{
 
 	function __construct(){
 		$this->UserData=new UserModel();
