@@ -26,7 +26,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="assets/dist/img/login.png" class="user-image" alt="">
-                  <span class="hidden-xs"><?php $line=$data['users']; echo $fu=$line->fname; echo " "; echo $fu=$line->lname; ?></span>
+                  <span class="hidden-xs"><?php echo $_SESSION['name']; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -69,7 +69,7 @@
                       <a href="?action=change_pwd" class="btn btn-default">Change Password</a>
                     </div>
                     <div class="pull-right">
-                      <a href="logout.php" class="btn btn-default">Sign out</a>
+                      <a href="<?php echo base_url();?>index.php/Auth/logout" class="btn btn-default">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -88,7 +88,7 @@
         <section class="sidebar">
           <!-- Sidebar user panel -->
           <div class="user-panel" style="font-size:0.9em; font-weight:bold; color:#FFFFFF; z-index:2;">
-              <p>Point of sale</p>
+              <p style="text-align:center;">Attendance Tracker</p>
           </div>
           <ul class="sidebar-menu">
 		   <?php if ($action=="home" or $action==""){
@@ -97,7 +97,7 @@
 		   else{
 		 echo'<li class="treeview">';
 		   }?>
-              <a href="?action=home">
+              <a href="<?php echo base_url()?>/index.php/Auth/home">
               <i class="glyphicon glyphicon-home" style="color:lightblue;"></i><span>Home</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
             </li>
@@ -243,7 +243,7 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer"style="background:url(images/header_bg.png) 0 0 repeat-x; color:white;background-color:#C02424; font-size:10px; margin-bottom:0px;">
-        <strong>Copyright &copy; Agaba Andrew  <?php echo date("Y")." "; ?> <a href="http://takenet.net" target="blank"> </a> TEL: 070278688</strong> All rights reserved <version style="float:right;">Developed by Agaba Andrew | Supported by Dr. Haruna Lule Senior HR Advisor IntraHealth International</version>
+        <strong>Copyright &copy; Agaba Andrew  <?php echo date("Y")." "; ?> <a href="http://takenet.net" target="blank"> </a> TEL: 070278688</strong> All rights reserved <version style="float:right;">Developed by Agaba Andrew</version>
       </footer>
   </body>
 </html>

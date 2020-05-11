@@ -78,19 +78,16 @@
 	</div>
 <table>
 <tr>
-<form action="" method="POST" id="login-form" autocomplete="off">
+<form action="<?php echo base_url()?>index.php/Auth/authenticate" method="POST" id="login-form" autocomplete="off">
  
 </tr>
 <tr>
 <?php
-if(isset($_GET['msg'])){
-$print_msg=$_GET['msg'];
-
-
+if(isset($data[0])){
 
 echo'<div class="alert alert-danger alert-dismissable">
                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>'.$print_msg.'</strong>
+                  <strong>'.$data[0].'</strong>
                   </div>';
 }
 ?>
