@@ -4,8 +4,8 @@
           <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
 			      <li class="active"><a href="<?php echo base_url();?>index.php/Users/getUsers">Manage Users</a></li>
-			      <li class=""><a href="<?php echo base_url();?>index.php/Users/getLogs">User Logs</a></li>
-				  
+			      <!-- <li class=""><a href="<?php echo base_url();?>index.php/Users/getLogs">User Logs</a></li>
+				   -->
                  </ul>
 				</div>
                                
@@ -17,7 +17,7 @@
   <div class="col-md-4">
   					
       <p>Add Users</p>
-	          <form method="post" action="">
+	          <form method="post" action="" autocomplte="off">
 	  	             <div id="">
 					<label>Username: *</label>
                       <input class="form-control" name="username" id="title" value="" placeholder="Username" type="text" required>
@@ -178,14 +178,10 @@
 					  </select>
 				   </div>
 				    <div id="">
-					  <label>Surname:</label>
-                      <input class="form-control" style="width:100%;" name="lname" id="" value="<?php echo $row['lname']?>" placeholder="" type="text">
+					  <label>Name:</label>
+                      <input class="form-control" style="width:100%;" name="lname" id="" value="<?php echo $row['name']?>" placeholder="" type="text">
 				   </div>
-				   <div id="">
-					  <label>First Name: *</label>
-                      <input type="text" style="width:100%;" class="form-control" name="fname" id="" value="<?php echo $row['fname']?>" placeholder="">
-                      <input type="hidden" style="width:100%;" class="form-control" name="update_user" id="" value="" placeholder="" type="hidden">
-				   </div>
+				
 				      	   <div id="">
                       <label style="width:100%;">District: <span style="color:red">*</span></label> 
 					  <option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
