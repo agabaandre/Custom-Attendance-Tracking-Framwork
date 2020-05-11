@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 11, 2020 at 05:57 AM
+-- Generation Time: May 11, 2020 at 06:14 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -5883,7 +5883,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uuid`, `username`, `password`, `usertype`, `name`, `flag`) VALUES
-(2, 'admin', 'admin', 'admin', 'Super l Administrator', 1),
+(2, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 'admin', 'Super l Administrator', 1),
 (3, 'james', '1234', 'admin', 'James James', 1);
 
 --
