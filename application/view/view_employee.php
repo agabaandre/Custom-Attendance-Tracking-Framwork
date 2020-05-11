@@ -5,9 +5,7 @@
              <ul class="nav nav-tabs">
              <li class=""><a href="<?php echo base_url();?>index.php/Employee/addEmployee">Register New Employee</a></li>
 				<li class="active"><a href="<?php echo base_url();?>index.php/Employee/viewEmployee">Employee List</a></li>
-                  <li class=""><a href="dashboard.php?action=passport">Add a Passport Photo</a></li>
-                  <li class=""><a href="dashboard.php?action=update_passport">Update Passport Photo</a></li>				  
-                 </ul>
+                       </ul>
 				</div>
 
 <div class="col-md-12 offset-2" style="width:100%; overflow:auto; margin:0 auto;">

@@ -91,7 +91,7 @@
               <p style="text-align:center;">Attendance Tracker</p>
           </div>
           <ul class="sidebar-menu">
-		   <?php if ($action=="home" or $action==""){
+		   <?php if (in_array($data['template'],array('home'))){
             echo'<li class="active treeview">';
 			}
 		   else{
@@ -117,7 +117,7 @@
             </li>';
 			  }
 			?>	
-            <?php if ($action=="register" or $action=="view_employee"){
+            <?php if (in_array($data['template'],array('add_employee','view_employee'))){
             echo'<li class="active treeview">';
 			}
 		     else{
@@ -136,26 +136,25 @@
               </ul>
             </li>
          			  
-		  <?php if ($action=="import"){
+		    <?php if (in_array($data['template'],array('import'))){
             echo'<li class="active treeview">';
-			}
+	   		}
 		     else{
-			echo'<li class="treeview">';
+		    	echo'<li class="treeview">';
 		     }?>
 			   	<?php 
-            // access control
+      
            if  	($_SESSION['usertype'] =='admin')
-		   { 
-              echo'<a href="?action=import">
+		      { ?>
+              <a href="<?php echo base_url();?>index.php/Employee/import">
                 <i class="glyphicon glyphicon-upload" style="color:lightblue;"></i>
                <span>Upload Multiple Employees</span>
                 <span class="label label-primary pull-right"></span>
               </a>
-             </li>';
-		    }
-			 //end acces-control
-			 ?>
-			   <?php if ($action=="reports"){
+             </li>
+		   <?php  } ?>
+			
+			   <?php if (in_array($data['reports'],array('reports'))){
             echo'<li class="active treeview">';
 			}
 		     else{
@@ -167,7 +166,7 @@
                 <span class="label label-primary pull-right"></span>
               </a>
             </li>
-			<?php if ($action=="users" or $action=="jobs"or $action=="departments"or $action=="facilities"or $action=="disapprovals"){
+			<?php if ( in_array($data['template'],array('manage_district','manage_departments','manage_job','manage_facility','manage_users'))){
             echo'<li class="active treeview">';
 			}
 		     else{
@@ -185,7 +184,7 @@
         <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Departments</a></li>
 				<li><a href="<?php echo base_url();?>index.php/Employee/viewData/facility/manage_facility"><i class="fa fa-circle-o"></i>Manage Facilities</a></li>
 				<li><a href="<?php echo base_url();?>index.php/Employee/viewData/district/manage_district"><i class="fa fa-circle-o"></i>Manage Districts</a></li>
-				<li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Schedules</a></li>';
+				<li><a href="<?php echo base_url();?>index.php/Employee/addData/schedules/manage_schedules"><i class="fa fa-circle-o"></i>Manage Schedules</a></li>';
 			   <?php } 
 				else{ ?>
                 <li><a href="<?php echo base_url();?>index.php/Employee/viewData/departments/manage_departments"><i class="fa fa-circle-o"></i>Manage Jobs</a></li>
@@ -195,14 +194,14 @@
 				
               </ul>
             </li>
-				   <?php if ($action=="change_pwd"){
+				   <?php if (in_array($data['template'],array('change_password'))){
             echo'<li class="active treeview">';
 			}
 		     else{
 			echo'<li class="treeview">';
 		     }?>
               <a href="?action=change_pwd">
-                <i class="glyphicon glyphicon-lock" style="color:lightblue;""></i>
+                <i class="glyphicon glyphicon-lock" style="color:lightblue;"></i>
                <span>Change Password</span>
                 <span class="label label-primary pull-right"></span>
               </a>
@@ -242,7 +241,7 @@
 								
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-      <footer class="main-footer"style="background:url(images/header_bg.png) 0 0 repeat-x; color:white;background-color:#C02424; font-size:10px; margin-bottom:0px;">
+      <footer class="main-footer"style="background:url(images/header_bg.png) 0 0 repeat-x; color:white;background-color:#003248; font-size:10px; margin-bottom:0px;">
         <strong>Copyright &copy; Agaba Andrew  <?php echo date("Y")." "; ?> <a href="http://takenet.net" target="blank"> </a> TEL: 070278688</strong> All rights reserved <version style="float:right;">Developed by Agaba Andrew</version>
       </footer>
   </body>

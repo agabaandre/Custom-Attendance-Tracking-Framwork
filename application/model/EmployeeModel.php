@@ -51,10 +51,20 @@ class EmployeeModel extends AndreModel{
      return 'Success';
      }
      }
-    function getImage()
-    {
-    
+    // function importCSV($csvFile)
+    // {
+    //   while(($line = fgetcsv($csvFile)) !== FALSE){
+    //     $sql=$this->raw_insert("INSERT INTO employee_details (emp_id, national_id, Surname, Firstname, Othername, Contact, Position, Department, district, facility, flag) VALUES ('".$line[0]."','".$line[1]."','".$line[2]."','".$line[3]."','".$line[4]."','".$line[4]."','".$line[5]."','".$line[6]."','".$line[7]."','".$line[8]."','".$line[9]."','".$line[10]."','".$line[11]."')");
+    //     }
+    //      fclose($csvFile);
+    //      if($sql){
+    //     $data['msg'] = 'Success';
+    //      }
+  
+    //    else{
+    //   $data['msg']= 'Check File';
+    //     }
        
-    }
+    // }
 }
  ?>

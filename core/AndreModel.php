@@ -11,7 +11,15 @@ class AndreModel extends DbConn{
 		 $this->connection= $dbcon->dbconnection();
 		$mysqli=$this->connection;
 	}
-	
+	function raw_insert($sql){
+		$result = $this->connection->query($sql);
+		//   echo $sql;
+		if($result)
+			return $result;
+		else
+		return 'Failed SQL ERROR';
+	}
+
 	
 	function insert($tableName,$insertWhat){
 
