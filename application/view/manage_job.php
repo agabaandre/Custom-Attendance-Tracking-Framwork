@@ -8,38 +8,29 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
 <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
 				  
-				  <li class=""><a href="<?php echo base_url();?>index.php/Employee/viewData/facility/manage_facility">Manage facility</a></li>					  
+				  <li class=""><a href="<?php echo base_url();?>index.php/Employee/viewData/job/manage_job">Manage Job</a></li>					  
                  </ul>
 				</div>
                                
                 <div class="box-header with-border">
-                  <h5 class="box-title">Manage Office</h5>
+                  <h5 class="box-title">Manage Job</h5>
 </div>
-<button class=" btn btn-md btn-primary" data-toggle="modal" data-target="#add">Add Office</button>
+<button class=" btn btn-md btn-primary" data-toggle="modal" data-target="#add">Add Job</button>
 	<div class="modal fade" id="add" tabindex="-1" role="dialog" data-backdrop="static">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                           <div class="modal-header">
                                               <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
-                                              <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Add facility</center></h4>
+                                              <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Add Job</center></h4>
                                           </div>
                                    
                                           <div class="modal-body">
                                               
-     <form action="<?php echo base_url();?>index.php/Employee/addData/facility/manage_facility" method="post" enctype="multipart/form-data" >
-              <label>Office/Facility:</label>
+     <form action="<?php echo base_url();?>index.php/Employee/addData/job/manage_job" method="post" enctype="multipart/form-data" >
+              <label>job:</label>
               <input type="text" class="form-control" name="name" value="" style="width:100%;">
-              <label>Facility Type:</label>
-              <select class="form-control" name="type" style="width:100%;">
-              <option>Administrative Office</option>
-              <option>Health Center II</option>
-              <option>Health Center III</option>
-              <option>Health Center Iv</option>
-              <option>Others</option>
-
-              </select>
               
-<button type="submit" class="btn btn-primary"><i class="add" style="margin-top:30px;"></i>Add Office</button>
+<button type="submit" class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Add Job</button>
 </form>
 
                                          </div>
@@ -63,8 +54,8 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                     <thead>
                       <tr>
               <th>#</th>
-					   <th>Office /Facility</th>
-             <th>Office Type /Facility Type</th>
+					   <th>Job</th>
+           
 						<th>Edit / Delete</th>
 						
                       </tr>
@@ -83,12 +74,11 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
 
                     <td><?php echo $i++;?></td>
             <td><?php echo $row['name'];?></td>
-            <td><?php echo $row['type'];?></td>
 					   
                        
                        <td>
-	<button data-toggle="modal" data-target="#<?php echo $modalid='my'.$row['id'];?>" title="Update facility Details" class="btn btn-sm btn-info"><i class="edit"></i>Edit</button>
-	<form action="<?php echo base_url();?>index.php/Employee/deleteData/facility/manage_facility" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
+	<button data-toggle="modal" data-target="#<?php echo $modalid='my'.$row['id'];?>" title="Update job Details" class="btn btn-sm btn-info"><i class="edit"></i>Edit</button>
+	<form action="<?php echo base_url();?>index.php/Employee/deleteData/job/manage_job" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
 	<!-- <button  type="submit" title="On click, this record will be deleted!" class="btn btn-sm btn-danger" style="float:left;"><i class="delete"></i>Delete</button>		            -->
 	</form>
 			<div class="modal fade" id="<?php echo $modalid;?>" tabindex="-1" role="dialog" data-backdrop="static">
@@ -96,15 +86,15 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                       <div class="modal-content">
                                           <div class="modal-header">
                                               <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
-                                              <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Office</center></h4>
+                                              <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Job</center></h4>
                                           </div>
                                           <div class="modal-body">
                                               
-              <form action="<?php echo base_url();?>index.php/Employee/addData/facility/manage_facility" method="post" enctype="multipart/form-data" >
-              <label>facility:</label>
+              <form action="<?php echo base_url();?>index.php/Employee/addData/job/manage_job" method="post" enctype="multipart/form-data" >
+              <label>job:</label>
               <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" style="width:100%;">
-              <input class="form-control" name="id"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
-<button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update facility</button>
+              <input class="form-control" name="id2"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
+<button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update Job</button>
 </form>
 
                                          </div>
