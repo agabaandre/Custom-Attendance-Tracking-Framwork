@@ -16,11 +16,13 @@ class EmployeeModel extends AndreModel{
 
 	function viewEmpoyees(){
 
-		return $this->query('array','select * from employee_details');
+    
+
+		return $this->get('array','select * from employee_details');
     }
     function viewEmpoyee($id=FALSE){
 
-		return $this->query('array','select* from employee_details where employee.id=$id');
+		return $this->get('object','select* from employee_details where employee.id=$id');
 	}
 	function deleteEmmployee($id){
        $query= $this->delete('employee_details',$id);

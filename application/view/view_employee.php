@@ -10,7 +10,7 @@
                  </ul>
 				</div>
 
-<div class="col-md-12 offset-2" style="width:100%; overflow:auto; margin:0 auto">
+<div class="col-md-12 offset-2" style="width:100%; overflow:auto; margin:0 auto;">
 <hr style="border:1px solid rgb(140, 141, 137);">
 	 <table id="mydata" class="table table-bordered table-hover table-responsive">
                     <thead>
@@ -29,11 +29,13 @@
                     </thead>
                     <tbody>
 				<?php 
-				$employees=$data['employees'];
-				print_r($employees);
-
-				foreach($employees as $row) { 
+				
+				$rows=$data['employees'];
+				foreach($rows as $row)
+				{
 					
+                 
+				
 					?>
                 
                            <tr>

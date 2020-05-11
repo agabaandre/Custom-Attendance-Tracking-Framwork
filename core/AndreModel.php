@@ -33,52 +33,6 @@ class AndreModel extends DbConn{
 		return 'Failed SQL ERROR';
 	}
 
-	function select_obj($tableName,$args,$whereArgs){
-	
-		  $sql='SELECT ';
-
-		 foreach ($args as $key => $value)
-		  	 $sql.=$value.',';
-		  $sql=rtrim($sql,',');
-	   $sql.=' FROM '.$tableName;
-	 
-	   if($whereArgs)
-		$sql= $this->where($sql,$whereArgs);	
-		$sql=$this->appendSemicolon($sql);
-		
-		$result = $this->connection->query($sql);
-		if($result){
-		while($row=mysqli_fetch_object($result))
-			array_push($finale,$row);
-		return $row;
-		}
-		else
-		return 'Failed SQL ERROR';
-		
-	}
-	function select_array($tableName,$args,$whereArgs){
-	
-		$sql='SELECT ';
-
-	   foreach ($args as $key => $value)
-			 $sql.=$value.',';
-		$sql=rtrim($sql,',');
-	 $sql.=' FROM '.$tableName;
-   
-	 if($whereArgs)
-	  $sql= $this->where($sql,$whereArgs);	
-	  $sql=$this->appendSemicolon($sql);
-	  
-	  $result = $this->connection->query($sql);
-	  if($result){
-	  while($row=mysqli_fetch_object($result))
-		  array_push($finale,$row);
-	  return $row;
-	  }
-	  else
-	  return 'Failed SQL ERROR';
-	  
-  }
     function update($tableName,$whatToSet,$whereArgs){
     	$sql='UPDATE '.$tableName .' SET ';
     	foreach ($whatToSet as $key => $value)
@@ -121,29 +75,29 @@ class AndreModel extends DbConn{
 			return $sql.' ;';	
 	}
 
-function query($type,$query){
+function get($type,$query){
 	
    	
 
  $sql=$this->appendSemicolon($query);
 
-
+ $array=array();
   $result = $this->connection->query($sql);
   if($result){
-  if ($type="object"){
+  if ($type=="object"){
   while($row=mysqli_fetch_object($result))
- 
-  return $row;
-  }}
-  elseif ($type="array"){
-	while($row=mysqli_fetch_array($result))
+  array_push($array,$row);
+  return $array;
+  }
 
-  return $row;  
+  elseif ($type=="array"){
+	while($row=mysqli_fetch_assoc($result))
+	array_push($array,$row);
+  return $array;  
   }
   else
-  return 'Failed SQL ERROR';
-  
-  
+  return 'Failed SQL ERROR'; 
+ }
 }
 function affected_rows(){
 	$data=$this->connection->affected_rows;
