@@ -10,9 +10,9 @@ class UserModel extends AndreModel{
 	}
 
 	
-	public function rawquerys(){
+	public function getUsers(){
 
-		$result=$this->get('object','select * from users');
+		$result=$this->get('array','select * from users');
 
 		return $result;	
 	}
