@@ -1,7 +1,7 @@
 <div class="col-md-12" style=" background:white; border-radius: 5px;">
-<?php 
-?>
-          <div class="nav-tabs-custom">
+<?php	$i=1;
+	//print_r($facilitydata);
+?>      <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
 			      <li class="active"><a href="<?php echo base_url();?>index.php/Users/getUsers">Manage Users</a></li>
 			      <!-- <li class=""><a href="<?php echo base_url();?>index.php/Users/getLogs">User Logs</a></li>
@@ -45,36 +45,8 @@
                       <input type="text" class="form-control" name="lname" id="" value="" placeholder="Surname" type="text"/ required>
 				   </div>
 				   
-			     	   <div id="">
-                      <label>District: <span style="color:red">*</span></label> 
-                       <select name="district" class="form-control select2">
-					   <option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
-                            <?php 
-							$sql1 = mysqli_query($dbcon,"SELECT district_id,name FROM district ORDER BY name ASC");
-		                      $i1=0;
-							  while ($list1=mysqli_fetch_array($sql1))
-							  {
-							  $i1++; ?>
-							  <option value="<?php echo $list1['district_id']; ?>"><?php  echo $list1['name']; ?>
-							  </option>
-		               <?php } ?>
-		           </select>
-				   </div>
-				   	   <div id="">
-                      <label>Facility: <span style="color:red">*</span></label> 
-					    <option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
-                       <select name="facility" class="form-control select2">
-                            <?php 
-							$sql1 = mysqli_query($dbcon,"SELECT facility_id, name FROM facility ORDER BY name ASC");
-		                      $i1=0;
-							  while ($list1=mysqli_fetch_array($sql1))
-							  {
-							  $i1++; ?>
-							  <option value="<?php echo $list1['facility_id']; ?>"><?php  echo $list1['name']; ?>
-							  </option>
-		               <?php } ?>
-		           </select>
-				   </div>
+				  
+				   
 				     <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
                      <button  class="btn btn-primary" name="add_user" type="submit" ><span class="add"></span>Add User</button>
                      </form>
@@ -92,24 +64,24 @@
 					   <th style="width:22%;">Username</th>
                         <th style="width:20%;">User Type</th>
 						<th style="width:20%;">Name</th>							
-						<th style="width:20%;">Facility</th>							
-						<th style="width:20%;">District</th>							
+												
 						<th style="width:10%;">status</th>							
 						<th style="width:10%;">Edit</th>
                       </tr>
                     </thead>
 <tbody>       
- <?php	$i=1;
-    $users=$data['users'];
+
+<?php
+
 	
+$users=$data['users'];
     foreach($users as $row) {
     ?>
       <tr>  <td><?php echo $i++;?></td>
             <td><?php $uuid=$row['uuid'];?><?php echo $row['username'];?></td>
 			<td><?php echo  $active_op=$row['usertype'];?></td>
-			<td><?php echo $row['name'];?></td>
-			<td></td>
-			<td></td>
+			<td><?php echo $facility=$row['name'];?></td>
+			
     
 	    <td>
 	<?php
@@ -182,28 +154,7 @@
                       <input class="form-control" style="width:100%;" name="lname" id="" value="<?php echo $row['name']?>" placeholder="" type="text">
 				   </div>
 				
-				      	   <div id="">
-                      <label style="width:100%;">District: <span style="color:red">*</span></label> 
-					  <option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
-                       <select name="district" class="form-control select2" style="width:100%;">
-                        
-						
-							  <option value="<?php echo $active_op=$list1['district_id']; ?>"<?php if ($district==$active_op){echo "selected";}?>><?php  echo $list1['name']; ?>
-							  </option>
-		             
-		           </select>
-				   </div>
-				   	   <div id="">
-                      <label style="width:100%;">Facility: <span style="color:red">*</span></label> 
-                       <select name="facility" class="form-control select2" style="width:100%;">
-					   					   <option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
-                        
-							
-							  <option value="<?php echo $active_op=$list1['facility_id']; ?>"<?php if ($facility==$active_op){echo "selected";}?>><?php  echo $list1['name']; ?>
-							  </option>
-		            
-		           </select>
-				   </div>
+			
 				  
 				     <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
                      <button  class="btn btn-primary" name="" type="submit" ><span class="add"></span>Update User</button>

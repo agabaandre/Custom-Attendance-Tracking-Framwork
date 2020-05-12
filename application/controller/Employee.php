@@ -11,6 +11,10 @@ class Employee extends AndreController{
 	}
 	public function addEmployee(){
     $data['template']='add_employee';
+    $data['dist']=$this->EmpData->getDistricts();
+    $data['fac']=$this->EmpData->getFacilities();
+    $data['depart']=$this->EmpData->getDeparts();
+    $data['job']=$this->EmpData->getJobs();
 	return	$this->load_view('main',$data);
     }
 
@@ -18,6 +22,10 @@ class Employee extends AndreController{
         $employee=$this->inputpost();
         $data['template']='add_employee';
         $this->EmpData->saveEmployee($employee);
+        $data['dist']=$this->EmpData->getDistricts();
+        $data['fac']=$this->EmpData->getFacilities();
+        $data['depart']=$this->EmpData->getDeparts();
+        $data['job']=$this->EmpData->getJobs();
         
 	return	$this->load_view('main',$data);
     }
@@ -25,6 +33,10 @@ class Employee extends AndreController{
 	public function viewEmployee(){
         $data['template']='view_employee';
         $data['employees']=$this->EmpData->viewEmpoyees();
+        $data['dist']=$this->EmpData->getDistricts();
+        $data['fac']=$this->EmpData->getFacilities();
+        $data['depart']=$this->EmpData->getDeparts();
+        $data['job']=$this->EmpData->getJobs();
         
    return	$this->load_view('main',$data);
 
@@ -42,8 +54,6 @@ class Employee extends AndreController{
         $data['template']=$template;
         $data['msg']=$this->EmpData->addData($table,$sdata);
         $data['dbset']=$this->EmpData->viewData($table);
-
-      
         
    return	$this->load_view('main',$data);
 
@@ -53,11 +63,13 @@ class Employee extends AndreController{
         $data['template']=$template;
         $data['msg']=$this->EmpData->deleteData($table,$id);
         $data['dbset']=$this->EmpData->viewData($table);
-        
+        $data['dist']=$this->EmpData->getDistricts();
+        $data['fac']=$this->EmpData->getFacilities();
+        $data['depart']=$this->UserData->getDeparts();
+        $data['job']=$this->UserData->getJobs();
    return	$this->load_view('main',$data);
-
-   
     }
+   
     public function import(){
             $csvMimes = array('application/vnd.ms-excel','text/plain','text/csv','text/tsv');
             if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'],$csvMimes)){

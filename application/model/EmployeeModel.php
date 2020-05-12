@@ -45,26 +45,29 @@ class EmployeeModel extends AndreModel{
     }
     function deleteData($table,$id){
     
-      $query=$this->delete($table,$id);
+     $query=$this->delete($table,$id);
       if($query)
      {
      return 'Success';
      }
      }
-    // function importCSV($csvFile)
-    // {
-    //   while(($line = fgetcsv($csvFile)) !== FALSE){
-    //     $sql=$this->raw_insert("INSERT INTO employee_details (emp_id, national_id, Surname, Firstname, Othername, Contact, Position, Department, district, facility, flag) VALUES ('".$line[0]."','".$line[1]."','".$line[2]."','".$line[3]."','".$line[4]."','".$line[4]."','".$line[5]."','".$line[6]."','".$line[7]."','".$line[8]."','".$line[9]."','".$line[10]."','".$line[11]."')");
-    //     }
-    //      fclose($csvFile);
-    //      if($sql){
-    //     $data['msg'] = 'Success';
-    //      }
-  
-    //    else{
-    //   $data['msg']= 'Check File';
-    //     }
-       
-    // }
+    public function getFacilities(){
+    $list=$this->get("array","SELECT * from facility");
+    return $list;
+    }
+    public function getDistricts(){
+      $list=$this->get("array","SELECT * from district");
+    return $list;
+    }
+    public function getDeparts(){
+      $list=$this->get("array","SELECT * from departments");
+    return $list;
+     }
+     public function getJobs(){
+      $list=$this->get("array","SELECT * from job");
+    return $list;
+     }
+     
+   
 }
  ?>

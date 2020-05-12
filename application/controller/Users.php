@@ -1,16 +1,16 @@
 <?php
 
 require_once(__DIR__.'/../model/UserModel.php');
+require_once(__DIR__.'/../model/EmployeeModel.php');
 require_once(__DIR__.'/../../core/AndreController.php');
 
 class Users extends AndreController{
 
 	function __construct(){
-		$this->UserData=new UserModel();
+        $this->UserData=new UserModel();
+        $this->EmpData=new EmployeeModel();
 	
 	}
-
-	
 	public function getUsers(){
 
 	

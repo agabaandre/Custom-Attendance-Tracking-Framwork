@@ -5,7 +5,7 @@ if ($_SESSION['uuid']='')
 $this->load_view('login','Logged Out');
 }
 ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 'TRUE'); 
+ini_set('display_errors', 'true'); 
 //helpers
 require('config/helpers.php');
 //controllers

@@ -48,8 +48,11 @@
                        
                        <td> <?php echo $myname=$row['Surname']." ".$row['Firstname']." ".$row['Othername'];?></td>
                        <td> <?php echo $row['contact'];?></td>
-                       <td> <?php echo $position=$row['Position'];?></td>
-					  <td> <?php  echo $department=$row['Department'];?></td>
+                       <td> <?php echo $job=$row['Position'];?></td>
+					  <td> <?php  echo $department=$row['Department'];
+									   $facility=$row['facility'];
+									   $district=$row['district'];
+					  ?></td>
 			
 					  <td>
 					  <?php
@@ -90,6 +93,7 @@
                                           <div class="modal-body">
 			
 				<form name="" id="data_form" method="post" action="">
+				   <div class="col-md-6">
 		        	<div id="">
                       <label>IPPS NUMBER:  <span style="color:red">*</span></label> 
                       <input style="width:100%;" class="form-control" name="emp_id" id="studid" value="<?php echo $row['emp_id'];?>" type="number" readonly>
@@ -115,34 +119,68 @@
 					  <label>Other Name: </label>
                       <input style="width:100%;" class="form-control" name="oname" id="othername" value="<?php echo $row['Othername'];?>" placeholder="Other Name"type="text">
 				   </div>
+				</div>
+				<div class="col-md-6">
 				    <div id="">
                       <label>Mobile Contact:  <span style="color:red"></span></label>
 				      <input  style="width:100%;" class="form-control" name="Contact" id="Contact" value="<?php echo $row['contact'];?>" placeholder="Contact" type="tel"/>
 			       </div>	
+				   <?php	
 
-					<div id="">
-                      <label>Position:  <span style="color:red">*</span></label>
-                    <select style="width:100%;" name="position" class="form-control select2" id="">
-                            <?php 
-						
-							  $i++; ?>
-							  <option value="<?php echo $list['position']; ?>"><?php  echo $list['position']; ?>
-							  </option>
-		              
-		           </select>
-			       </div>
-			
+					$i=1;
+
+					$facilitydata=$data['fac'];
+					$districtdata=$data['dist'];
+					$departmentdata=$data['depart'];
+					$jobdata=$data['job'];
+
+					//print_r($facilitydata);
+					?>
+
 				   <div id="">
-                      <label>Department: <span style="color:red">*</span></label> 
-                       <select style="width:100%;" name="department" class="form-control select2">
-                            <?php 
-							
-							  $i1++; ?>
-							  <option value="<?php echo $list1['department']; ?>"><?php  echo $list1['department']; ?>
+                      <label style="width:100%;">Job: <span style="color:red">*</span></label> 
+					            <select name="district" class="form-control select2" style="width:100%;">
+                          <?php foreach($jobdata as $list1){ ?>
+						
+							  <option value="<?php echo $active_op=$list1['name']; ?>"<?php if ($job==$active_op){echo "selected";}?>><?php  echo $list1['name']; ?>
 							  </option>
-		               
+						  <?php } ?>
 		           </select>
 				   </div>
+				   	   <div id="">
+                      <label style="width:100%;">Office/ Facility: <span style="color:red">*</span></label> 
+                       <select name="facility" class="form-control select2" style="width:100%;">
+					   				
+						 <?php foreach($facilitydata as $list2){ ?>
+								  <option value="<?php echo $active_op=$list2['name']; ?>"<?php if ($facility==$active_op){echo "selected";}?>><?php  echo $list2['name']; ?>
+							  </option>
+						 <?php } ?>
+		            
+		           </select>
+				   </div>
+				   <div id="">
+                      <label style="width:100%;">District: <span style="color:red">*</span></label> 
+					       <select name="district" class="form-control select2" style="width:100%;">
+                          <?php foreach($districtdata as $list1){ ?>
+								  <option value="<?php echo $active_op=$list1['name']; ?>"<?php if ($district==$active_op){echo "selected";}?>><?php  echo $list1['name']; ?>
+							  </option>
+						  <?php } ?>
+		           </select>
+				   </div>
+				   	   <div id="">
+                      <label style="width:100%;">Department: <span style="color:red">*</span></label> 
+                       <select name="facility" class="form-control select2" style="width:100%;">
+					   					   
+                        
+						 <?php foreach($departmentdata as $list2){ ?>
+							<option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
+							  <option value="<?php echo $active_op=$list2['name']; ?>"<?php if ($department==$active_op){echo "selected";}?>><?php  echo $list2['name']; ?>
+							  </option>
+						 <?php } ?>
+		            
+		           </select>
+				   </div>
+				</div>
 				   
 			       <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
                      <button  class="btn btn-primary" name="update_employee" type="submit" ><span class="glyphicon glyphicon-edit"></span>Update Employee</button>
