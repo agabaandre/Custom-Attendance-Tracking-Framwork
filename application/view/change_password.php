@@ -10,11 +10,7 @@
                   <h5 class="box-title">Change Password</h5>
 </div>
 	
-  <script src="<?php echo base_url() ?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
-
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
-
+  
 
 
 <div class="col-md-4">
