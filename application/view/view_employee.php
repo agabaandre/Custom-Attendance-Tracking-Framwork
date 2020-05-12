@@ -1,5 +1,3 @@
-
-
 <div class="col-md-12" style=" background:white; border-radius: 5px;">
           <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
@@ -134,7 +132,7 @@
 					$departmentdata=$data['depart'];
 					$jobdata=$data['job'];
 
-					//print_r($facilitydata);
+	
 					?>
 
 				   <div id="">
