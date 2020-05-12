@@ -26,7 +26,8 @@ class Auth extends AndreController{
 		$username=$this->inputpost('username');
 		$password=$this->inputpost('password');
 		$userdata=$this->UserData->authenticate($username,sha1(md5($password)));
-	   // print_r($userdata);
+	
+	  
 		foreach($userdata as $user){
 			 $uuid=$user['uuid'];
 			 $username=$user['username'];
@@ -41,6 +42,7 @@ class Auth extends AndreController{
 			$_SESSION['usertype']=$usertype;
 			$_SESSION['name']=$name;
 			$_SESSION['uuid']=$uuid;
+			
 			$data['template']='home';
 			
             

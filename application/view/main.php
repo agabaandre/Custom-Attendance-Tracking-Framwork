@@ -48,7 +48,7 @@
 					  <span id="txt1"></span>
 			
 </br></br>
-       <?php echo $fu=$line->fname; echo " "; echo $fu=$line->lname;?>
+       <?php echo $_SESSION['usertype'];?>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -66,7 +66,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="?action=change_pwd" class="btn btn-default">Change Password</a>
+                      <a href="<?php echo base_url();?>index.php/Users/newPwd" class="btn btn-default">Change Password</a>
                     </div>
                     <div class="pull-right">
                       <a href="<?php echo base_url();?>index.php/Auth/logout" class="btn btn-default">Sign out</a>
@@ -200,7 +200,7 @@
 		     else{
 			echo'<li class="treeview">';
 		     }?>
-              <a href="?action=change_pwd">
+              <a href="<?php echo base_url();?>index.php/Users/newPwd">
                 <i class="glyphicon glyphicon-lock" style="color:lightblue;"></i>
                <span>Change Password</span>
                 <span class="label label-primary pull-right"></span>
@@ -236,6 +236,7 @@
      </style>
         <?php
         $viewname=$data['template'];
+        
 				include($viewname.'.php');						
 				?>	
 								

@@ -11,7 +11,8 @@ class AndreModel extends DbConn{
 		 $this->connection= $dbcon->dbconnection();
 		$mysqli=$this->connection;
 	}
-	function raw_insert($sql){
+	//use for delete, update, insert sql raw queries
+	function rawquery($sql){
 		$result = $this->connection->query($sql);
 		//   echo $sql;
 		if($result)

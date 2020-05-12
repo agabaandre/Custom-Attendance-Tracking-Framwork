@@ -28,11 +28,22 @@ class Users extends AndreController{
 		print_r($post);
 	 
     }
+    public function newPwd(){
+        $data['template']='change_password';
+     return  $this->load_view('main',$data);
+       }
+    public function changePwd(){
+        $data['template']='change_password';
+        $data['msg']=$this->UserData->changePwd();
+        return  $this->load_view('main',$data);
+	}
+
     public function changeState(){
 
-		$post=$this->inputpost('input1');
+        $post=$this->inputpost('input1');
+       
 
-		print_r($post);
+	print_r($post);
 
     
 	 

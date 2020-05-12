@@ -13,6 +13,6 @@
 			      <li>Verify attendance on a daily basis</li>
 				  <li>Compile and generate data for the Integrated Human Resource System (iHRIS)</li>
 			
-			
+			<?php  ?>
         	</div>	
 </div>
