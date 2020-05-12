@@ -213,45 +213,37 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        
+        <!-- Content Header (Page header) -->
         <section class="content-header">
 		</section>
-    
-<section class="content" >
-      <?php
-              $viewname=$data['template'];
-              
-              include($viewname.'.php');						
-      ?>	
- </section><!-- /.content -->
+        <!-- Main content -->
+		  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+        <section class="content" >
+		<style>
+        .content{
+	     min-height:640px;
+	     background:#FEFFFF;
+	     width:98%;
+         overflow:auto;
+          }
+		  .noborder{
+			 border:hidden;
+			 font:1.5em;
+			 
+			 
+		  }
+     </style>
+        <?php
+        $viewname=$data['template'];
+        
+				include($viewname.'.php');						
+				?>	
+								
+        </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer"style="background:url(images/header_bg.png) 0 0 repeat-x; color:white;background-color:#003248; font-size:10px; margin-bottom:0px;">
         <strong>Copyright &copy; Agaba Andrew  <?php echo date("Y")." "; ?> <a href="http://takenet.net" target="blank"> </a> TEL: 070278688</strong> All rights reserved <version style="float:right;">Developed by Agaba Andrew</version>
-        <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-      	<!-- <script src="<?php echo base_url(); ?>assets/lib/jquery-1.10.2.min.js"></script>  -->
-        <script src="<?php echo base_url(); ?>assets/plugins/select2/select2.full.min.js"></script>
-      	<script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/plugins/fastclick/fastclick.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
-         <script src="<?php echo base_url(); ?>assets/https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>-->
-        <script src="<?php echo base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script> 
-        <!-- datepicker -->
-        <script src="<?php echo base_url(); ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-        <!-- Bootstrap WYSIHTML5 -->
-        <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-        <!-- Slimscroll -->
-        <script src="<?php echo base_url(); ?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="<?php echo base_url(); ?>assets/dist/js/app.min.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="<?php echo base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
-          <!--  -->
-
       </footer>
   </body>
 </html>
