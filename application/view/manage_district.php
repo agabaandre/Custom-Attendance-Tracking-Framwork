@@ -47,7 +47,7 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                       <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                       <strong>'.$data['msg'].'</strong>
                                       </div>';
-                                            }
+                                      }
   ?>
 <hr style="border:1px solid rgb(140, 141, 137);"/>
 	 <table id="mydata" class="table table-bordered table-responsive">
