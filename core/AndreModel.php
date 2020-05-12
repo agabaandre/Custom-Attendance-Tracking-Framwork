@@ -14,7 +14,7 @@ class AndreModel extends DbConn{
 	//use for delete, update, insert sql raw queries
 	function rawquery($sql){
 		$result = $this->connection->query($sql);
-		//   echo $sql;
+		  echo $sql;
 		if($result)
 			return $result;
 		else
@@ -36,7 +36,7 @@ class AndreModel extends DbConn{
 		  $sql.=')';
 		  $sql=$this->appendSemicolon($sql);
 		  $result = $this->connection->query($sql);
-		//   echo $sql;
+		
 		if($result)
 			return $result;
 		else

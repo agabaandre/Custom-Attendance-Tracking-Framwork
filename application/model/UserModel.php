@@ -19,7 +19,7 @@ class UserModel extends AndreModel{
 
 	public function changePwd(){
 		$oldpwd=$this->inputpost('oldpwd');
-		$newpwd=$this->inputpost('newpwd');
+		$newpwd=sha1(md5($this->inputpost('newpwd')));
 		$realoldpwd=sha1(md5($oldpwd));
 		$username=$this->inputpost('username');
 		$check=$this->get('array',"SELECT * from users where username='$username'");
@@ -28,7 +28,7 @@ class UserModel extends AndreModel{
 		}
 		if($realoldpwd==$dboldpwd){
 
-		$sql=$this->rawquery("UPDATE users  SET password='$newpwd' where username=$username");
+		$sql=$this->rawquery("UPDATE `users` SET `password` = '$newpwd' WHERE `users`.`username` = '$username'; ");
 	     if($sql){
 		 return 'Changed Successful';	 
 		 }

@@ -35,7 +35,7 @@
                    <div id="">       
 					 <label> Old Password: *</label> 
                      <input class="form-control" name="oldpwd" id="" style="width:100%;" value="" placeholder="Old Password" type="password" required>
-					 <input class="form-control" name="username"  value="<?php echo $_SESSION['username'] ;?>" type="text">
+					 <input class="form-control" name="username"  value="<?php echo $_SESSION['username'] ;?>" type="hidden">
 				   </div>
 				   <div id="">
                      		<div class="form-group">
