@@ -1,11 +1,8 @@
-
 <!DOCTYPE html>
 <html >
 <head>
 <?php
-
 ?>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -13,23 +10,17 @@
     <meta name="author" content="Agaba Andrew">
   <title>AAT login</title>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.css">
-	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/cmxform.css">
-	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/lib/validationEngine.jquery.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style2.css">
-	
 	<!-- Scripts -->
 	<script href="<?php echo base_url(); ?>assets/js/lib/jquery.min.js" type="text/javascript"></script>
 	<script href="<?php echo base_url(); ?>assets/js/lib/jquery.validate.min.js" type="text/javascript"></script>
-	
 	<script>
 	/*$.validator.setDefaults({
 		submitHandler: function() { alert("submitted!"); }
 	});*/
-	
 	$(document).ready(function() {
-		
 		// validate signup form on keyup and submit
 		$("#login-form").validate({
 			rules: {
@@ -53,17 +44,10 @@
 				}
 			}
 		});
-	
 	});
-
 	</script>
-
-	 
-  
 </head>
-
 <body>
- 
  <div class="col-md-4"></div>
  <div class="col-md-4">
  <div class="panel panel-default">
@@ -71,20 +55,15 @@
            <p style="font-weight:bold; text-align:center; font-size:1.5em;"> ATT Login</p>
                   </div>
         <div class="panel-body">
-            
-                
             </form>
-	   
 	</div>
 <table>
 <tr>
 <form action="<?php echo base_url()?>index.php/Auth/authenticate" method="POST" id="login-form" autocomplete="off">
- 
 </tr>
 <tr>
 <?php
 if(isset($data[0])){
-
 echo'<div class="alert alert-danger alert-dismissable">
                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                   <strong>'.$data[0].'</strong>
@@ -110,7 +89,6 @@ echo'<div class="alert alert-danger alert-dismissable">
     </div> 
 </tr>
 </table>
-
 </form>
 <footer class="main-footer"style="background:url(images/header_bg.png) 0 0 repeat-x; color:white;background-color:#C02424; font-size:10px;">
         <strong>Copyright &copy; Agaba Andrew <?php echo date("Y");?> <a href="<?php echo base_url(); ?>assets/http://takenet.net" target="blank"> </a></strong> All rights reserved <version style="float:right;">Employee Tracking System</version>
@@ -118,8 +96,5 @@ echo'<div class="alert alert-danger alert-dismissable">
 </div>
  </div>
  <div class="col-md-4"></div>
-
-
-
 </body>
 </html>

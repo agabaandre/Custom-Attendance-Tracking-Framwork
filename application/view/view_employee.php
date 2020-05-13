@@ -5,7 +5,6 @@
 				<li class="active"><a href="<?php echo base_url();?>index.php/Employee/viewEmployee">Employee List</a></li>
                        </ul>
 				</div>
-
 <div class="col-md-12 offset-2" style="width:100%; overflow:auto; margin:0 auto;">
 <hr style="border:1px solid rgb(140, 141, 137);">
 	 <table id="mydata" class="table table-bordered table-hover table-responsive">
@@ -25,25 +24,17 @@
                     </thead>
                     <tbody>
 				<?php 
-				
 				$rows=$data['employees'];
 				foreach($rows as $row)
 				{
-					
-                 
-				
 					?>
-                
                            <tr>
 					      <td><?php echo $id=$row['emp_id']; ?></td>
 						   <td><?php echo $nin=$row['national_id']; ?></td>
 						   <td><?php echo $row['hris_pid']; ?></td>
-			    
                         <!-- <td><img src="modules/employee_details/getImage.php?id=<?php //echo $row["emp_id"];?>" class="img img-thumbnail" style="width:80px; height:80px;"/></td>
-                   
                        -->
 					  <td><img src="<?php echo base_url();?>assets/images/no_pic.png" href="dashboard.php?action=passport" class="img img-thumbnail" style="width:25px; height:25px;"/></td>';
-                       
                        <td> <?php echo $myname=$row['Surname']." ".$row['Firstname']." ".$row['Othername'];?></td>
                        <td> <?php echo $row['contact'];?></td>
                        <td> <?php echo $job=$row['Position'];?></td>
@@ -51,7 +42,6 @@
 									   $facility=$row['facility'];
 									   $district=$row['district'];
 					  ?></td>
-			
 					  <td>
 					  <?php
                        //Flag Raiser
@@ -73,11 +63,7 @@
 						 <button type='submit' name='change_flag' class='btn btn-sm btn-danger' name='status'><span class='glyphicon glyphicon-remove'></span>De-activate</button>
 						 </form>";   
 					  }
-					  
-				     
 					  ?>
-					  
-					
 					  </td>
 		              <td>
 <button data-toggle="modal" data-target="#<?php echo $modalid=$id;?>" title="Update Employee Details" class="btn btn-sm btn-info"><span class='glyphicon glyphicon-edit'></span>Edit</button>
@@ -89,7 +75,6 @@
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Employee</center></h4>
                                           </div>
                                           <div class="modal-body">
-			
 				<form name="" id="data_form" method="post" action="">
 				   <div class="col-md-6">
 		        	<div id="">
@@ -104,7 +89,6 @@
                       <label>National ID:  <span style="color:red"></span></label> 
                       <input style="width:100%;" class="form-control" name="nin" id="studid" value="<?php echo $row['national_id'];?>" type="text">
 					</div>
-				
 				<div id="">
 					  <label>Surname:  <span style="color:red">*</span></label>
                       <input style="width:100%;" class="form-control" name="Surname" id="Surname" value="<?php echo $row['Surname'];?>" placeholder="Surname"type="text" required>
@@ -124,22 +108,16 @@
 				      <input  style="width:100%;" class="form-control" name="Contact" id="Contact" value="<?php echo $row['contact'];?>" placeholder="Contact" type="tel"/>
 			       </div>	
 				   <?php	
-
 					$i=1;
-
 					$facilitydata=$data['fac'];
 					$districtdata=$data['dist'];
 					$departmentdata=$data['depart'];
 					$jobdata=$data['job'];
-
-	
 					?>
-
 				   <div id="">
                       <label style="width:100%;">Job: <span style="color:red">*</span></label> 
 					            <select name="district" class="form-control select2" style="width:100%;">
                           <?php foreach($jobdata as $list1){ ?>
-						
 							  <option value="<?php echo $active_op=$list1['name']; ?>"<?php if ($job==$active_op){echo "selected";}?>><?php  echo $list1['name']; ?>
 							  </option>
 						  <?php } ?>
@@ -148,12 +126,10 @@
 				   	   <div id="">
                       <label style="width:100%;">Office/ Facility: <span style="color:red">*</span></label> 
                        <select name="facility" class="form-control select2" style="width:100%;">
-					   				
 						 <?php foreach($facilitydata as $list2){ ?>
 								  <option value="<?php echo $active_op=$list2['name']; ?>"<?php if ($facility==$active_op){echo "selected";}?>><?php  echo $list2['name']; ?>
 							  </option>
 						 <?php } ?>
-		            
 		           </select>
 				   </div>
 				   <div id="">
@@ -168,33 +144,23 @@
 				   	   <div id="">
                       <label style="width:100%;">Department: <span style="color:red">*</span></label> 
                        <select name="facility" class="form-control select2" style="width:100%;">
-					   					   
-                        
 						 <?php foreach($departmentdata as $list2){ ?>
 							<option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
 							  <option value="<?php echo $active_op=$list2['name']; ?>"<?php if ($department==$active_op){echo "selected";}?>><?php  echo $list2['name']; ?>
 							  </option>
 						 <?php } ?>
-		            
 		           </select>
 				   </div>
 				</div>
-				   
 			       <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
                      <button  class="btn btn-primary" name="update_employee" type="submit" ><span class="glyphicon glyphicon-edit"></span>Update Employee</button>
-					
                      </form>
 				   </div>	  
-
-				    
-
                                          </div>
                                       </div>
                                     </div>
              </div>
-			       
 					   </td>
-				 
 					</tr>
 					<?php }	?>
                     </tbody>
@@ -202,9 +168,7 @@
                     </tfoot>
     </table>
 </div>
-
 <div class="col-md-4">			 
-				
 </div>
 <div class="col-md-4">
 </div>

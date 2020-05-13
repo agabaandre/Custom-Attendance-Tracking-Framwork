@@ -4,14 +4,11 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
 });
 </script>
 <div class="col-md-12">
-
 <div class="nav-tabs-custom">
              <ul class="nav nav-tabs">
-				  
 				  <li class=""><a href="<?php echo base_url();?>index.php/Employee/viewData/job/manage_job">Manage Job</a></li>					  
                  </ul>
 				</div>
-                               
                 <div class="box-header with-border">
                   <h5 class="box-title">Manage Job</h5>
 </div>
@@ -23,26 +20,19 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                               <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Add Job</center></h4>
                                           </div>
-                                   
                                           <div class="modal-body">
-                                              
      <form action="<?php echo base_url();?>index.php/Employee/addData/job/manage_job" method="post" enctype="multipart/form-data" >
               <label>job:</label>
               <input type="text" class="form-control" name="name" value="" style="width:100%;">
-              
 <button type="submit" class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Add Job</button>
 </form>
-
                                          </div>
                                       </div>
                                     </div>
     </div>
-  
 <div class="col-md-12">
-
 <?php
                                       if(isset($data['msg'])){
-
                                       echo'<div id="alert" class="alert alert-success alert-dismissable">
                                       <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                       <strong>'.$data['msg'].'</strong>
@@ -55,27 +45,18 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                       <tr>
               <th>#</th>
 					   <th>Job</th>
-           
 						<th>Edit / Delete</th>
-						
                       </tr>
                     </thead>
                     <tbody>
 					<?php 
-				   
-          
         //  print_r($data);
           $i=1;
           foreach($data['dbset'] as $row){
-              
                     ?>
                     <tr>
-                  
-
                     <td><?php echo $i++;?></td>
             <td><?php echo $row['name'];?></td>
-					   
-                       
                        <td>
 	<button data-toggle="modal" data-target="#<?php echo $modalid='my'.$row['id'];?>" title="Update job Details" class="btn btn-sm btn-info"><i class="edit"></i>Edit</button>
 	<form action="<?php echo base_url();?>index.php/Employee/deleteData/job/manage_job" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
@@ -89,21 +70,17 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Job</center></h4>
                                           </div>
                                           <div class="modal-body">
-                                              
               <form action="<?php echo base_url();?>index.php/Employee/addData/job/manage_job" method="post" enctype="multipart/form-data" >
               <label>job:</label>
               <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" style="width:100%;">
               <input class="form-control" name="id2"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
 <button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update Job</button>
 </form>
-
                                          </div>
                                       </div>
                                     </div>
              </div>
-			       
 					   </td>
-					   
                     </tr>
 					<?php }?>
                     </tbody>
@@ -111,4 +88,3 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                     </tfoot>
     </table>
 </div>
-

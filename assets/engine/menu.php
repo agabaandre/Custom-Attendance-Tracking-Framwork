@@ -1,14 +1,14 @@
-<?php if ($action=="rosta1"){ echo'<body class="hold-transition skin-red sidebar-collapse sidebar-mini" id="index" onload="startTime()">';} 
+<?php if (in_array($data['template'],array('rosta'))){ echo'<body class="hold-transition skin-red sidebar-collapse sidebar-mini" id="index" onload="startTime()">';} 
  else { echo'<body class="hold-transition skin-red sidebar-mini" id="index" onload="startTime()">';} ?>
     <div class="wrapper">
 
       <header class="main-header static-top" >
-        <a href="" class="logo"  style="background:#7b9f0e url(images/header_title.png) 0 0 repeat-x; color:white;">
+        <a href="" class="logo"  style="background:#7b9f0e url(<?php echo base_url(); ?>.'assets/images/header_title.png') 0 0 repeat-x; color:white;">
           <span class="logo-lg"><b>ATT</b></span>
         </a>
-        <nav class="navbar navbar-static-top" role="navigation" style="background:url(images/header_bg.png) 0 0; background-color:#7b9f0e; color:white;">
+        <nav class="navbar navbar-static-top" role="navigation" style="background-image:url('assets/images/header_bg.png') 0 0; background-color:#7b9f0e; color:white;">
           <a href="#" class="" data-toggle="offcanvas">
-            <span class="" style="background: url(images/scale.png) no-repeat; width:40px; height:40px; float:left; margin-left:2px; margin-top:7px;"></span>
+            <span class="" style="background: url(assets/images/scale.png) no-repeat; width:40px; height:40px; float:left; margin-left:2px; margin-top:7px;"></span>
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -67,25 +67,26 @@
 		   else{
 		 echo'<li class="treeview">';
 		   }?>
-              <a href="<?php echo base_url()?>/index.php/Auth/home">
+              <a href="<?php echo base_url()?>index.php/Auth/home">
               <i class="glyphicon glyphicon-home" style="color:lightblue;"></i><span>Home</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               </li>
-			<?php if ($action=="verify"){
+			<?php if (in_array($data['template'],array('rosta'))){
             echo'<li class="active treeview">';
 			}
 		     else{
 			echo'<li class="treeview">';
 		     }?>
 			<?php  if  ($_SESSION['usertype']=='admin' || $_SESSION['usertype']=='hr')
-		    	 {
-              echo'<a href="?action=rosta">
+		    	 { ?>
+              <a href="<?php echo base_url();?>index.php/Attendance/roster">
                <i class="glyphicon glyphicon-refresh" style="color:lightblue;"></i>
                <span>Schedule Employees</span>
                <span class="label label-primary pull-right"></span>
               </a>
-            </li>';
-			    }
+            </li>
+
+			   <?php }
 			?>	
             <?php if (in_array($data['template'],array('add_employee','view_employee'))){
             echo'<li class="active treeview">';
@@ -128,7 +129,7 @@
 		     else{
 			    echo'<li class="treeview">';
 		          }?>
-              <a href="?action=reports">
+              <a href="<?php echo base_url();?>index.php/Attendance/reports">
               <i class="glyphicon glyphicon-th-list" style="color:lightblue;"></i>
               <span>Reports</span>
               <span class="label label-primary pull-right"></span>

@@ -1,22 +1,13 @@
 <?php 
  require_once(__DIR__.'/../../core/AndreModel.php');
-
 class UserModel extends AndreModel{
-
 	public function __contruct(){
 		parent::__construct();
-
-		
 	}
-
-	
 	public function getUsers(){
-
 		$result=$this->get('array','select * from users');
-
 		return $result;	
 	}
-
 	public function changePwd(){
 		$oldpwd=$this->inputpost('oldpwd');
 		$newpwd=sha1(md5($this->inputpost('newpwd')));
@@ -27,7 +18,6 @@ class UserModel extends AndreModel{
 			$dboldpwd=$row['password'];
 		}
 		if($realoldpwd==$dboldpwd){
-
 		$sql=$this->rawquery("UPDATE `users` SET `password` = '$newpwd' WHERE `users`.`username` = '$username'; ");
 	     if($sql){
 		 return 'Changed Successful';	 
@@ -35,14 +25,10 @@ class UserModel extends AndreModel{
 		 else{
 		return 'Change Failed';
 		 }
-
 		}
 		else{
 		return 'Change Failed';
-
 		}
 	}
-
-
 }
  ?>

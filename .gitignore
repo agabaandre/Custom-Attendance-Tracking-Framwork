@@ -1,2 +1,3 @@
 .Datastore
 .files
+^(\s)*$\n

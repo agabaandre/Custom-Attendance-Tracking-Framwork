@@ -3,75 +3,23 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 11, 2020 at 06:14 AM
+-- Generation Time: May 13, 2020 at 10:14 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `attend`
 --
-
 -- --------------------------------------------------------
-
---
--- Table structure for table `36`
---
-
-CREATE TABLE `36` (
-  `entry_id` varchar(100) NOT NULL,
-  `facility_id` varchar(100) NOT NULL,
-  `month` int(11) NOT NULL,
-  `year` year(4) NOT NULL,
-  `nin` varchar(100) NOT NULL,
-  `day1` varchar(1) DEFAULT NULL,
-  `day2` varchar(1) DEFAULT NULL,
-  `day3` varchar(1) DEFAULT NULL,
-  `day4` varchar(1) DEFAULT NULL,
-  `day5` varchar(1) DEFAULT NULL,
-  `day6` varchar(1) DEFAULT NULL,
-  `day7` varchar(1) DEFAULT NULL,
-  `day8` varchar(1) DEFAULT NULL,
-  `day9` varchar(1) DEFAULT NULL,
-  `day10` varchar(1) DEFAULT NULL,
-  `day11` varchar(1) DEFAULT NULL,
-  `day12` varchar(1) DEFAULT NULL,
-  `day13` varchar(1) DEFAULT NULL,
-  `day14` varchar(1) DEFAULT NULL,
-  `day15` varchar(1) DEFAULT NULL,
-  `day16` varchar(1) DEFAULT NULL,
-  `day17` varchar(1) DEFAULT NULL,
-  `day18` varchar(1) DEFAULT NULL,
-  `day19` varchar(1) DEFAULT NULL,
-  `day20` varchar(1) DEFAULT NULL,
-  `day21` varchar(1) DEFAULT NULL,
-  `day22` varchar(1) DEFAULT NULL,
-  `day23` varchar(1) DEFAULT NULL,
-  `day24` varchar(1) DEFAULT NULL,
-  `day25` varchar(1) DEFAULT NULL,
-  `day26` varchar(1) DEFAULT NULL,
-  `day27` varchar(1) DEFAULT NULL,
-  `day28` varchar(1) DEFAULT NULL,
-  `day29` varchar(1) DEFAULT NULL,
-  `day30` varchar(1) DEFAULT NULL,
-  `day31` varchar(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `attendance_data`
 --
-
 CREATE TABLE `attendance_data` (
   `emp_id` varchar(30) NOT NULL,
   `date` date DEFAULT NULL,
@@ -87,11 +35,9 @@ CREATE TABLE `attendance_data` (
   `integrity_checker` varchar(150) NOT NULL DEFAULT '',
   `verification_flag` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `attendance_data`
 --
-
 INSERT INTO `attendance_data` (`emp_id`, `date`, `month_name`, `year_name`, `time_in`, `time_out`, `present_status`, `Shift`, `location`, `time_difference`, `value_location`, `integrity_checker`, `verification_flag`) VALUES
 ('64545', '2017-04-08', 4, 2017, '12:16:06', NULL, 0, 'DAY', 'OFF', 0, NULL, '64545/08-04-2017', 1),
 ('681624', '2017-04-08', 4, 2017, '09:53:23', NULL, 0, 'DAY', 'OFF', 0, NULL, '681624/08-04-2017', 1),
@@ -122,53 +68,33 @@ INSERT INTO `attendance_data` (`emp_id`, `date`, `month_name`, `year_name`, `tim
 ('960382', '2017-04-07', 4, 2017, '16:53:24', NULL, 0, 'EVENING', 'OFF', 0, NULL, '960382/07-04-2017', 1),
 ('991878', '2017-04-08', 4, 2017, '12:33:37', NULL, 0, 'DAY', 'OFF', 0, NULL, '991878/08-04-2017', 1),
 ('996676', '2017-03-23', 3, 2017, '21:52:06', NULL, 0, 'NIGHT', 'OFF', 0, NULL, '996676/23-03-2017', 1);
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `departments`
 --
-
 CREATE TABLE `departments` (
   `id` int(11) NOT NULL,
-  `department` varchar(60) NOT NULL
+  `name` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `departments`
 --
-
-INSERT INTO `departments` (`id`, `department`) VALUES
-(1, 'Clinical Services'),
-(5, 'Ear nose and throat (ENT)'),
-(6, 'Gynaecology'),
-(16, 'Health'),
-(7, 'Maternity'),
-(8, 'Microbiology'),
-(9, 'Neonatal unit'),
-(11, 'Occupational therapy'),
-(10, 'Ophthalmology'),
-(12, 'Orthopaedic'),
-(13, 'Pharmacy'),
-(15, 'Physiotherapy'),
-(2, 'Sexual health (genitourinary m');
-
+INSERT INTO `departments` (`id`, `name`) VALUES
+(34, 'Soda'),
+(36, 'Time'),
+(35, 'Water');
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `district`
 --
-
 CREATE TABLE `district` (
-  `district_id` int(50) NOT NULL,
+  `id` int(50) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `district`
 --
-
-INSERT INTO `district` (`district_id`, `name`) VALUES
+INSERT INTO `district` (`id`, `name`) VALUES
 (1, 'KALANGALA'),
 (2, 'KAMPALA'),
 (3, 'KIBOGA'),
@@ -285,13 +211,82 @@ INSERT INTO `district` (`district_id`, `name`) VALUES
 (115, 'KAGADI'),
 (116, 'KAKUMIRO'),
 (117, 'ABIM');
-
 -- --------------------------------------------------------
-
+--
+-- Stand-in structure for view `dutyreport`
+-- (See below for the actual view)
+--
+CREATE TABLE `dutyreport` (
+`id` int(255)
+,`entry_id` varchar(100)
+,`facility_id` varchar(100)
+,`department_id` varchar(100)
+,`emp_id` varchar(200)
+,`schedule_id` varchar(255)
+,`color` varchar(20)
+,`duty_date` date
+,`end` date
+,`allDay` varchar(4)
+,`day1` date
+,`day2` date
+,`day3` date
+,`day4` date
+,`day5` date
+,`day6` date
+,`day7` date
+,`day8` date
+,`day9` date
+,`day10` date
+,`day11` date
+,`day12` date
+,`day13` date
+,`day14` date
+,`day15` date
+,`day16` date
+,`day17` date
+,`day18` date
+,`day19` date
+,`day20` date
+,`day21` date
+,`day22` date
+,`day23` date
+,`day24` date
+,`day25` date
+,`day26` date
+,`day27` date
+,`day28` date
+,`day29` date
+,`day30` date
+,`day31` date
+);
+-- --------------------------------------------------------
+--
+-- Table structure for table `duty_rosta`
+--
+CREATE TABLE `duty_rosta` (
+  `id` int(255) NOT NULL,
+  `entry_id` varchar(100) DEFAULT NULL,
+  `facility_id` varchar(100) DEFAULT NULL,
+  `department_id` varchar(100) DEFAULT NULL,
+  `emp_id` varchar(200) DEFAULT NULL,
+  `schedule_id` varchar(255) DEFAULT NULL,
+  `color` varchar(20) DEFAULT NULL,
+  `duty_date` date DEFAULT NULL,
+  `end` date DEFAULT NULL,
+  `allDay` varchar(4) NOT NULL DEFAULT 'true'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `duty_rosta`
+--
+INSERT INTO `duty_rosta` (`id`, `entry_id`, `facility_id`, `department_id`, `emp_id`, `schedule_id`, `color`, `duty_date`, `end`, `allDay`) VALUES
+(18, '2020-05-022323', NULL, NULL, '2323', '14', 'd1a110', '2020-05-02', '2020-05-03', 'true'),
+(19, '2020-05-032323', NULL, NULL, '2323', '14', 'd1a110', '2020-05-03', '2020-05-04', 'true'),
+(20, '2020-05-043313', NULL, NULL, '3313', '14', 'd1a110', '2020-05-04', '2020-05-05', 'true'),
+(21, '2020-05-12996676', NULL, NULL, '996676', '14', 'd1a110', '2020-05-12', '2020-05-13', 'true');
+-- --------------------------------------------------------
 --
 -- Table structure for table `employee_details`
 --
-
 CREATE TABLE `employee_details` (
   `emp_id` varchar(15) NOT NULL,
   `finger_print` varchar(5) DEFAULT NULL,
@@ -302,38 +297,32 @@ CREATE TABLE `employee_details` (
   `Othername` varchar(50) NOT NULL,
   `contact` varchar(17) DEFAULT NULL,
   `Position` varchar(200) NOT NULL,
-  `Department` varchar(50) NOT NULL,
+  `Department` varchar(50) DEFAULT NULL,
   `district` varchar(50) NOT NULL,
-  `facility` varchar(150) NOT NULL,
+  `facility` varchar(150) DEFAULT NULL,
   `flag` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `employee_details`
 --
-
 INSERT INTO `employee_details` (`emp_id`, `finger_print`, `hris_pid`, `national_id`, `Surname`, `Firstname`, `Othername`, `contact`, `Position`, `Department`, `district`, `facility`, `flag`) VALUES
 ('2323', NULL, '12313', 'CM871819191', 'Agabaa', 'Andrew', 'Sam', '0778787889', 'Accountant', 'Clinical Services', 'KALANGALA', '580', 1),
 ('3313', NULL, '63457', 'CM8718191916', 'Kibiyee', 'Denise', '', '077878789', 'Accountant', 'Clinical Services', 'KALANGALA', '580', 1),
-('996676', NULL, NULL, NULL, 'Kalembe ', 'Moureen', '', NULL, 'Office Typist', 'Administration', 'KAMULI', '580', 1);
-
+('996676', NULL, NULL, NULL, 'Kalembe ', 'Moureen', '', NULL, 'Office Typist', 'Administration', 'KAMULI', '580', 1),
+('892181', NULL, '88182', '77277718', 'Kibs', 'Den', '', '', 'Accountant', 'Soda', 'KALANGALA', 'KALEHE Health Centre II', 1);
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `facility`
 --
-
 CREATE TABLE `facility` (
-  `facility_id` int(50) NOT NULL,
+  `id` int(50) NOT NULL,
   `name` varchar(200) NOT NULL,
   `type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `facility`
 --
-
-INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
+INSERT INTO `facility` (`id`, `name`, `type`) VALUES
 (1, 'KALEHE Health Centre II', 'Health Centre II'),
 (2, 'KAGANDA Health Centre II', 'Health Centre II'),
 (3, 'NAKATEETE Health Centre II', 'Health Centre II'),
@@ -1327,9 +1316,9 @@ INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
 (991, 'ADJUMANI DHO\'s Office', 'DHO\'s Office'),
 (992, 'APAC DHO\'s Office', 'DHO\'s Office'),
 (993, 'ARUA DHO\'s Office', 'DHO\'s Office'),
-(994, 'GULU DHO\'s Office', 'DHO\'s Office');
-INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
-(995, 'KITGUM DHO\'s Office', 'DHO\'s Office'),
+(994, 'GULU DHO\'s Office', 'DHO\'s Office'),
+(995, 'KITGUM DHO\'s Office', 'DHO\'s Office');
+INSERT INTO `facility` (`id`, `name`, `type`) VALUES
 (996, 'KOTIDO DHO\'s Office', 'DHO\'s Office'),
 (997, 'LIRA DHO\'s Office', 'DHO\'s Office'),
 (998, 'MOROTO DHO\'s Office', 'DHO\'s Office'),
@@ -2193,9 +2182,9 @@ INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
 (1856, 'BIYINZIKA CLINIC', 'Health Centre II'),
 (1857, 'BIYINZIKA HEALTH CARE Health Centre II', 'Health Centre II'),
 (1858, 'BLUE SKY CLINIC', 'Health Centre II'),
-(1859, 'BM CLINIC', 'Health Centre II');
-INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
-(1860, 'BONGO CLINIC', 'Health Centre II'),
+(1859, 'BM CLINIC', 'Health Centre II'),
+(1860, 'BONGO CLINIC', 'Health Centre II');
+INSERT INTO `facility` (`id`, `name`, `type`) VALUES
 (1861, 'BOSCO CLINIC', 'Health Centre II'),
 (1862, 'BUGOLOBI HEALTH CARE CLINIC- KISWA Health Centre II', 'Health Centre II'),
 (1863, 'EUREKA CLINIC', 'Health Centre II'),
@@ -3102,7 +3091,7 @@ INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
 (2764, 'PACHORA Health Centre II', 'PNFPs Health Centre II'),
 (2765, 'PAMAKA Health Centre II', 'Health Centre II'),
 (2766, 'ABONGO Health Centre II', 'Health Centre II');
-INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
+INSERT INTO `facility` (`id`, `name`, `type`) VALUES
 (2767, 'PAROKETO Health Centre II', 'Health Centre II'),
 (2768, 'AMOR Health Centre II', 'Health Centre II'),
 (2769, 'AYAKA Health Centre II', 'Health Centre II'),
@@ -4003,7 +3992,7 @@ INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
 (3664, 'BUHEHE Health Centre III', 'Health Centre III'),
 (3665, 'BUSITEMA Health Centre III', 'Health Centre III'),
 (3666, 'LUBIRA Health Centre III', 'Health Centre III');
-INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
+INSERT INTO `facility` (`id`, `name`, `type`) VALUES
 (3667, 'BUSOWOBI Health Centre III', 'Health Centre III'),
 (3668, 'IGOMBE Health Centre III', 'Health Centre III'),
 (3669, 'KASAMBIKA Health Centre III', 'Health Centre III'),
@@ -4868,37 +4857,18 @@ INSERT INTO `facility` (`facility_id`, `name`, `type`) VALUES
 (4528, 'LUGAZI TOWN COUNCIL', 'Town Council'),
 (4529, 'NJERU TOWN COUNCIL', 'Town Council'),
 (4530, 'LUKAYA TOWN COUNCIL', 'Town Council');
-
 -- --------------------------------------------------------
-
 --
--- Table structure for table `passports`
+-- Table structure for table `job`
 --
-
-CREATE TABLE `passports` (
-  `id` int(11) NOT NULL,
-  `emp_id` varchar(40) NOT NULL,
-  `Passport_photo` longblob NOT NULL,
-  `Name` varchar(150) NOT NULL,
-  `Size` varchar(5) NOT NULL
+CREATE TABLE `job` (
+  `id` int(7) NOT NULL,
+  `name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
 --
--- Table structure for table `position`
+-- Dumping data for table `job`
 --
-
-CREATE TABLE `position` (
-  `position_id` int(7) NOT NULL,
-  `position` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `position`
---
-
-INSERT INTO `position` (`position_id`, `position`) VALUES
+INSERT INTO `job` (`id`, `name`) VALUES
 (866, 'Accountant'),
 (2, 'Accounts Assistant'),
 (3, 'Administrative Assistant'),
@@ -5764,13 +5734,21 @@ INSERT INTO `position` (`position_id`, `position`) VALUES
 (863, 'Workshop Attendant'),
 (864, 'Workshop Supervisor'),
 (865, 'X-Ray Attendant');
-
 -- --------------------------------------------------------
-
+--
+-- Table structure for table `passports`
+--
+CREATE TABLE `passports` (
+  `id` int(11) NOT NULL,
+  `emp_id` varchar(40) NOT NULL,
+  `Passport_photo` longblob NOT NULL,
+  `Name` varchar(150) NOT NULL,
+  `Size` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
 --
 -- Table structure for table `report_1`
 --
-
 CREATE TABLE `report_1` (
   `date` date NOT NULL,
   `month_name` varchar(15) NOT NULL,
@@ -5784,13 +5762,10 @@ CREATE TABLE `report_1` (
   `last_gen` timestamp NOT NULL DEFAULT current_timestamp(),
   `rid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `results`
 --
-
 CREATE TABLE `results` (
   `emp_id` varchar(15) NOT NULL,
   `month` varchar(30) NOT NULL,
@@ -5800,40 +5775,21 @@ CREATE TABLE `results` (
   `official_request_days` int(2) NOT NULL,
   `leave_days` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
-
---
--- Table structure for table `rosta`
---
-
-CREATE TABLE `rosta` (
-  `id` int(11) NOT NULL,
-  `facility_id` varchar(50) NOT NULL,
-  `nin` varchar(30) NOT NULL,
-  `schedule_date` date NOT NULL,
-  `schedule` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `schedules`
 --
-
 CREATE TABLE `schedules` (
-  `schedule_id` int(11) NOT NULL,
-  `schedule` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `letter` varchar(1) NOT NULL,
   `starts` time NOT NULL,
   `ends` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `schedules`
 --
-
-INSERT INTO `schedules` (`schedule_id`, `schedule`, `letter`, `starts`, `ends`) VALUES
+INSERT INTO `schedules` (`id`, `name`, `letter`, `starts`, `ends`) VALUES
 (14, 'Day', 'D', '08:00:00', '17:00:00'),
 (15, 'Evening', 'E', '15:00:00', '21:00:00'),
 (16, 'Night', 'N', '21:00:00', '08:00:00'),
@@ -5842,33 +5798,25 @@ INSERT INTO `schedules` (`schedule_id`, `schedule`, `letter`, `starts`, `ends`) 
 (19, 'Study Leave', 'S', '00:00:00', '00:00:00'),
 (20, 'Maternity Leave', 'M', '00:00:00', '00:00:00'),
 (21, 'Other preauthorised Leave', 'Z', '00:00:00', '00:00:00');
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `settings`
 --
-
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
   `Setting_name` varchar(30) DEFAULT NULL,
   `Value` varchar(30) DEFAULT NULL,
   `flag` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `settings`
 --
-
 INSERT INTO `settings` (`id`, `Setting_name`, `Value`, `flag`) VALUES
 (1, 'geolocation_state', '127.0.0.1', 0);
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `users`
 --
-
 CREATE TABLE `users` (
   `uuid` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -5877,19 +5825,20 @@ CREATE TABLE `users` (
   `name` varchar(25) NOT NULL,
   `flag` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `users`
 --
-
 INSERT INTO `users` (`uuid`, `username`, `password`, `usertype`, `name`, `flag`) VALUES
-(2, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 'admin', 'Super l Administrator', 1),
-(3, 'james', '1234', 'admin', 'James James', 1);
-
+(2, 'admin', '63982e54a7aeb0d89910475ba6dbd3ca6dd4e5a1', 'admin', 'Super l Administrator', 1);
+-- --------------------------------------------------------
+--
+-- Structure for view `dutyreport`
+--
+DROP TABLE IF EXISTS `dutyreport`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `dutyreport`  AS  (select `duty_rosta`.`id` AS `id`,`duty_rosta`.`entry_id` AS `entry_id`,`duty_rosta`.`facility_id` AS `facility_id`,`duty_rosta`.`department_id` AS `department_id`,`duty_rosta`.`emp_id` AS `emp_id`,`duty_rosta`.`schedule_id` AS `schedule_id`,`duty_rosta`.`color` AS `color`,`duty_rosta`.`duty_date` AS `duty_date`,`duty_rosta`.`end` AS `end`,`duty_rosta`.`allDay` AS `allDay`,case when `duty_rosta`.`duty_date` like '%-%-01' then `duty_rosta`.`duty_date` end AS `day1`,case when `duty_rosta`.`duty_date` like '%-%-02' then `duty_rosta`.`duty_date` end AS `day2`,case when `duty_rosta`.`duty_date` like '%-%-03' then `duty_rosta`.`duty_date` end AS `day3`,case when `duty_rosta`.`duty_date` like '%-%-04' then `duty_rosta`.`duty_date` end AS `day4`,case when `duty_rosta`.`duty_date` like '%-%-05' then `duty_rosta`.`duty_date` end AS `day5`,case when `duty_rosta`.`duty_date` like '%-%-06' then `duty_rosta`.`duty_date` end AS `day6`,case when `duty_rosta`.`duty_date` like '%-%-07' then `duty_rosta`.`duty_date` end AS `day7`,case when `duty_rosta`.`duty_date` like '%-%-08' then `duty_rosta`.`duty_date` end AS `day8`,case when `duty_rosta`.`duty_date` like '%-%-09' then `duty_rosta`.`duty_date` end AS `day9`,case when `duty_rosta`.`duty_date` like '%-%-10' then `duty_rosta`.`duty_date` end AS `day10`,case when `duty_rosta`.`duty_date` like '%-%-11' then `duty_rosta`.`duty_date` end AS `day11`,case when `duty_rosta`.`duty_date` like '%-%-12' then `duty_rosta`.`duty_date` end AS `day12`,case when `duty_rosta`.`duty_date` like '%-%-13' then `duty_rosta`.`duty_date` end AS `day13`,case when `duty_rosta`.`duty_date` like '%-%-14' then `duty_rosta`.`duty_date` end AS `day14`,case when `duty_rosta`.`duty_date` like '%-%-15' then `duty_rosta`.`duty_date` end AS `day15`,case when `duty_rosta`.`duty_date` like '%-%-16' then `duty_rosta`.`duty_date` end AS `day16`,case when `duty_rosta`.`duty_date` like '%-%-17' then `duty_rosta`.`duty_date` end AS `day17`,case when `duty_rosta`.`duty_date` like '%-%-18' then `duty_rosta`.`duty_date` end AS `day18`,case when `duty_rosta`.`duty_date` like '%-%-19' then `duty_rosta`.`duty_date` end AS `day19`,case when `duty_rosta`.`duty_date` like '%-%-20' then `duty_rosta`.`duty_date` end AS `day20`,case when `duty_rosta`.`duty_date` like '%-%-21' then `duty_rosta`.`duty_date` end AS `day21`,case when `duty_rosta`.`duty_date` like '%-%-22' then `duty_rosta`.`duty_date` end AS `day22`,case when `duty_rosta`.`duty_date` like '%-%-23' then `duty_rosta`.`duty_date` end AS `day23`,case when `duty_rosta`.`duty_date` like '%-%-24' then `duty_rosta`.`duty_date` end AS `day24`,case when `duty_rosta`.`duty_date` like '%-%-25' then `duty_rosta`.`duty_date` end AS `day25`,case when `duty_rosta`.`duty_date` like '%-%-26' then `duty_rosta`.`duty_date` end AS `day26`,case when `duty_rosta`.`duty_date` like '%-%-27' then `duty_rosta`.`duty_date` end AS `day27`,case when `duty_rosta`.`duty_date` like '%-%-28' then `duty_rosta`.`duty_date` end AS `day28`,case when `duty_rosta`.`duty_date` like '%-%-29' then `duty_rosta`.`duty_date` end AS `day29`,case when `duty_rosta`.`duty_date` like '%-%-30' then `duty_rosta`.`duty_date` end AS `day30`,case when `duty_rosta`.`duty_date` like '%-%-31' then `duty_rosta`.`duty_date` end AS `day31` from `duty_rosta`) ;
 --
 -- Indexes for dumped tables
 --
-
 --
 -- Indexes for table `attendance_data`
 --
@@ -5898,20 +5847,23 @@ ALTER TABLE `attendance_data`
   ADD UNIQUE KEY `integrity_checker` (`integrity_checker`),
   ADD KEY `emp_id` (`emp_id`),
   ADD KEY `emp_id_2` (`emp_id`);
-
 --
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `department` (`department`);
-
+  ADD UNIQUE KEY `department` (`name`);
 --
 -- Indexes for table `district`
 --
 ALTER TABLE `district`
-  ADD PRIMARY KEY (`district_id`);
-
+  ADD PRIMARY KEY (`id`);
+--
+-- Indexes for table `duty_rosta`
+--
+ALTER TABLE `duty_rosta`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `entry_id` (`entry_id`);
 --
 -- Indexes for table `employee_details`
 --
@@ -5920,131 +5872,106 @@ ALTER TABLE `employee_details`
   ADD UNIQUE KEY `finger_print` (`finger_print`),
   ADD KEY `emp_id` (`emp_id`),
   ADD KEY `national_id` (`national_id`);
-
 --
 -- Indexes for table `facility`
 --
 ALTER TABLE `facility`
-  ADD PRIMARY KEY (`facility_id`);
-
+  ADD PRIMARY KEY (`id`);
+--
+-- Indexes for table `job`
+--
+ALTER TABLE `job`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `position` (`name`);
 --
 -- Indexes for table `passports`
 --
 ALTER TABLE `passports`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Student_id` (`emp_id`);
-
---
--- Indexes for table `position`
---
-ALTER TABLE `position`
-  ADD PRIMARY KEY (`position_id`),
-  ADD UNIQUE KEY `position` (`position`);
-
 --
 -- Indexes for table `report_1`
 --
 ALTER TABLE `report_1`
   ADD PRIMARY KEY (`rid`),
   ADD KEY `emp_id` (`emp_id`);
-
 --
 -- Indexes for table `results`
 --
 ALTER TABLE `results`
   ADD UNIQUE KEY `emp_id` (`emp_id`);
-
---
--- Indexes for table `rosta`
---
-ALTER TABLE `rosta`
-  ADD PRIMARY KEY (`id`);
-
 --
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
-  ADD PRIMARY KEY (`schedule_id`);
-
+  ADD PRIMARY KEY (`id`);
 --
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Setting_name` (`Setting_name`);
-
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`uuid`),
-  ADD UNIQUE KEY `username` (`username`);
-
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `username_2` (`username`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `district`
 --
 ALTER TABLE `district`
-  MODIFY `district_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
-
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+--
+-- AUTO_INCREMENT for table `duty_rosta`
+--
+ALTER TABLE `duty_rosta`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `facility`
 --
 ALTER TABLE `facility`
-  MODIFY `facility_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4531;
-
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4531;
+--
+-- AUTO_INCREMENT for table `job`
+--
+ALTER TABLE `job`
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=867;
 --
 -- AUTO_INCREMENT for table `passports`
 --
 ALTER TABLE `passports`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `position`
---
-ALTER TABLE `position`
-  MODIFY `position_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=867;
-
 --
 -- AUTO_INCREMENT for table `report_1`
 --
 ALTER TABLE `report_1`
   MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `rosta`
---
-ALTER TABLE `rosta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
-
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `uuid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

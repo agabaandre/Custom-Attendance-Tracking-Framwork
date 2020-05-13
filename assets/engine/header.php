@@ -57,6 +57,11 @@
 			 
 			 
 		  }
+      @media print {
+    .form-control {
+        display: none;
+     }
+    }
   </style>
     
   </head>

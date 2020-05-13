@@ -15,20 +15,14 @@ function base_url(){
 //uri segments
 function uriSegment($number){
     $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-  
     return $uriSegments[$number]; 
 }
 //autload controllers
 function autoload($controllers){
-
     foreach ($controllers as $controller) {
-
         include('./application/controller/'.$controller.'.php');
-
-       
     }
 }
-   
 function notification($data){
     if ($data['msg'])
     { 
@@ -39,10 +33,5 @@ function notification($data){
       </div>
    <?php
     }
-
 }
-
-
-    
-    
 ?>

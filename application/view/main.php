@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html class="no-js">
 <?php 
 	  include_once("assets/engine/header.php");
 ?>
 <?php 
 	  include_once("assets/engine/menu.php");
 ?>
- 
   <div class="content-wrapper">
       <section class="content" >
             <?php
@@ -18,6 +17,5 @@
 <?php 
 	  include_once("assets/engine/footer.php");
 ?>
-    
 </body>
 </html>

@@ -1,14 +1,11 @@
-
 <div class="col-md-12" style=" background:white; border-radius: 5px;"> 
 <div class="nav-tabs-custom"> 
     <ul class="nav nav-tabs">
 				  <li class="btn btn-sm btn-default"><a href="dashboard.php?action=reports">Back</a></li>
-				  
                  </ul>
 				</div>
                 <script>
                  function printDiv(printableDiv){
-   
                 var printContents =document.getElementById(printableDiv).innerHTML;
 				var originalContents= document.body.innerHTML;
 				document.body.innerHTML = printContents;
@@ -22,14 +19,11 @@ $(document).ready(function() {
         $(this).html( '<input type="text" placeholder="Year '+title+'" />' );
         $(this).html( '<input type="text" placeholder="Month '+title+'" />' );
     } );
- 
     // DataTable
     var table = $('#mydata').DataTable();
- 
     // Apply the search
     table.columns().every( function () {
         var that = this;
- 
         $( 'input', this.footer() ).on( 'keyup change', function () {
             if ( that.search() !== this.value ) {
                 that
@@ -39,9 +33,7 @@ $(document).ready(function() {
         } );
     } );
 } );
-	
     </script>
-
 <?php include("src/export.php");?>
  <button type="button"  class="btn btn-sm btn-default" onclick="printDiv('printableArea')">Web Print</button>
 <hr style="border:1px solid rgb(140, 141, 137);"/>
@@ -78,15 +70,12 @@ $(document).ready(function() {
   <p></p>
   <button   type="submit" class="btn btn btn-info" name="apply_limits"><span class="glyphicon glyphicon-ok"></span>Apply Limits</button>
 </fieldset>
-
 </form>
 <div id="printableArea">                            
                 <div class="box-header with-border">
                   <h5 class="box-title">Attendance Report</h5>
                 </div>
 <div class="col-md-12">
-
-   
 	 <table id="mydata" class="table table-hover table-responsive table-bordered">
                     <thead>
                       <tr>
@@ -97,11 +86,8 @@ $(document).ready(function() {
 						<th>iHRIS Person ID</th>
 						<th>Position</th>
 						<th>Facility</th>
-						
 						<th width=40>Total Hours</th>
 						<th width=40>Present(P)</th>
-						
-						
                       </tr>
                     </thead>
                     <tbody>
@@ -109,16 +95,12 @@ $(document).ready(function() {
                         $year_name= $_POST['year'];
 						$month_name= $_POST['month'];					
 					$sql="SELECT SUM( present_status ) AS total_present, SUM(time_difference) AS total_time, emp_id, month_name, year_name FROM attendance_data WHERE verification_flag=1 AND year_name LIKE '%$year_name%' AND month_name LIKE '%$month_name%' GROUP BY emp_id, month_name, year_name";
-					
 					$result = mysql_query($sql);
 					while($row = mysql_fetch_array($result)) 
-						
                    {  
-					   
                     ?>
                     <tr>
 					   <td><?php echo $id=$row['emp_id']; ?></td>
-					 
 					   <td><?php $month_fig=$row['month_name']; $dateobj = DateTime:: CreateFromFormat('!m', $month_fig);
 					   $month_name=$dateobj->format ('F');
 					   echo $month_name;
@@ -134,20 +116,17 @@ $(document).ready(function() {
 					   <td><?php echo $cells['facility']; }?></td>
 					   <td width=40><?php echo $row['total_time']; ?></td>
 					   <td width=40><?php echo $row['total_present']; ?></td>
-					   
                     </tr>
 					<?php  } ?>
                     </tbody>
                     <tfoot>
 					<th>
-					
                     </tfoot>
     </table>
     </div>
     </div>
 </div>
 <div class="col-md-4">			 
-				
 </div>
 <div class="col-md-4">
 </div>
