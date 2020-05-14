@@ -75,14 +75,18 @@ class AttendanceModel extends AndreModel{
 			return $data;
 		}
 		Public function addRoster(){
-			$start =$this->inputpost('start'); // or your date as well
-			$enddate = date('Y-m-d',strtotime($start . "+1 days")); 
-			$entry=$start.'ID'.$this->inputpost('hpid');
-			$person=$this->inputpost('hpid');
-			$duty=$this->inputpost('duty');
-			$color=$this->inputpost('color');
 			$data=$this->inputpost();
 			$done=$this->insert('duty_rosta',$data);
+			if($done){
+				 $rows=$this->affected_rows();
+			}
+			else if(!$done){
+				$rows=0;
+			}
+			return $rows;
+		}
+		Public function updateRoster(){
+			$done=$this->update('duty_rosta',array('schedule_id'=>$duty),array('entry_id'=>$this->inputpost('id')));
 			if($done){
 				 $rows=$this->affected_rows();
 			}

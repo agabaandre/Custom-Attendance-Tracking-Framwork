@@ -46,6 +46,11 @@ class Attendance extends AndreController {
 			$result=$this->AttData->addRoster();
 	return $result;
 	}
+	Public function updateRoster()
+	{
+			$result=$this->AttData->updateRoster();
+	return $result;
+	}
 	
    public function staffList(){	
 			$data['employees']=$this->EmpData->viewEmpoyees();
