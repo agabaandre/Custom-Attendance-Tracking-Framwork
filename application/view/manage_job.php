@@ -49,10 +49,16 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                       </tr>
                     </thead>
                     <tbody>
-					<?php 
-        //  print_r($data);
-          $i=1;
-          foreach($data['dbset'] as $row){
+                    <?php 
+                    //  print_r($data);
+                      $i=1;
+                      if(empty($data['dbset'])){
+                        $rows=$data['job'];
+                      }
+                      else{
+                      $rows = $data['dbset'];
+                      }
+                      foreach($rows as $row){
                     ?>
                     <tr>
                     <td><?php echo $i++;?></td>
@@ -70,10 +76,10 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Job</center></h4>
                                           </div>
                                           <div class="modal-body">
-              <form action="<?php echo base_url();?>index.php/Employee/addData/job/manage_job" method="post" enctype="multipart/form-data" >
+              <form action="<?php echo base_url();?>index.php/Employee/updateData/manage_job/job" method="post" enctype="multipart/form-data" >
               <label>job:</label>
               <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" style="width:100%;">
-              <input class="form-control" name="id2"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
+              <input class="form-control" name="id"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
 <button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update Job</button>
 </form>
                                          </div>
