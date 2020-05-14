@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2020 at 10:14 PM
+-- Generation Time: May 14, 2020 at 07:40 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -80,9 +80,12 @@ CREATE TABLE `departments` (
 -- Dumping data for table `departments`
 --
 INSERT INTO `departments` (`id`, `name`) VALUES
-(34, 'Soda'),
-(36, 'Time'),
-(35, 'Water');
+(3, 'Administration'),
+(2, 'Clinical Services'),
+(4, 'Education and Sports'),
+(5, 'Finance'),
+(1, 'Health'),
+(6, 'Tourism ');
 -- --------------------------------------------------------
 --
 -- Table structure for table `district`
@@ -308,7 +311,7 @@ CREATE TABLE `employee_details` (
 INSERT INTO `employee_details` (`emp_id`, `finger_print`, `hris_pid`, `national_id`, `Surname`, `Firstname`, `Othername`, `contact`, `Position`, `Department`, `district`, `facility`, `flag`) VALUES
 ('2323', NULL, '12313', 'CM871819191', 'Agabaa', 'Andrew', 'Sam', '0778787889', 'Accountant', 'Clinical Services', 'KALANGALA', '580', 1),
 ('3313', NULL, '63457', 'CM8718191916', 'Kibiyee', 'Denise', '', '077878789', 'Accountant', 'Clinical Services', 'KALANGALA', '580', 1),
-('996676', NULL, NULL, NULL, 'Kalembe ', 'Moureen', '', NULL, 'Office Typist', 'Administration', 'KAMULI', '580', 1),
+('996676', NULL, '7767171', '213123YY37817', 'Kalembe ', 'Moureen', '', '0781781788188', 'Office Typist', 'Soda', 'KAMULI', 'KALEHE Health Centre II', 1),
 ('892181', NULL, '88182', '77277718', 'Kibs', 'Den', '', '', 'Accountant', 'Soda', 'KALANGALA', 'KALEHE Health Centre II', 1);
 -- --------------------------------------------------------
 --
@@ -323,7 +326,7 @@ CREATE TABLE `facility` (
 -- Dumping data for table `facility`
 --
 INSERT INTO `facility` (`id`, `name`, `type`) VALUES
-(1, 'KALEHE Health Centre II', 'Health Centre II'),
+(1, 'KALEHE Health Centre II', 'Health Center II'),
 (2, 'KAGANDA Health Centre II', 'Health Centre II'),
 (3, 'NAKATEETE Health Centre II', 'Health Centre II'),
 (4, 'KALEGERO Health Centre II', 'Health Centre II'),
@@ -5925,7 +5928,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `district`
 --
