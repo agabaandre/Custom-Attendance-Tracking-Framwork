@@ -16,7 +16,10 @@ class EmployeeModel extends AndreModel{
 	}
 	 function deleteEmmployee($id){
        $query= $this->delete('employee_details',$id);
-     return $this->notify($query);
+       if($query)
+       {
+       return 'Success';
+       }
     }
     public function viewData($table){
     return	$this->get("array","SELECT * FROM `$table`");
@@ -28,15 +31,15 @@ class EmployeeModel extends AndreModel{
     return 'Success';
     }
     }
-    function updateData($table,$sdata){
-      $data=$this->inputpost();
+    function updateData($table){
+       $data=$this->inputpost();
       if ($table=='employee_details'){
-        $where=$this->inputpost('emp_id');
+        $where=array('emp_id'=>$this->inputpost('emp_id'));
       }
       else{
-        $where=$this->inputpost('id');
+        $where=array('id'=>$this->inputpost('id'));
       }
-      $query=$this->update($table,$sdata);
+      $query=$this->update($table,$data,$where);
       if($query)
      {
      return 'Success';

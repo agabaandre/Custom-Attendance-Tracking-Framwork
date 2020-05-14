@@ -6,7 +6,7 @@
 	}
 		ini_set('error_reporting', E_ALL);
 		//use true or false
-		ini_set('display_errors', 'false'); 
+		ini_set('display_errors', 'true'); 
 		//helpers
 		require('config/helpers.php');
 		//controllers

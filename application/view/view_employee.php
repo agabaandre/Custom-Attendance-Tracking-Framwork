@@ -56,18 +56,18 @@
 					  $status=$row['flag'];
 				   $space="----|";
 					  if ($status==0){ ?>
-						  <form action='<?php echo base_url();?>index.php/Employee/updateData/view_employee' method='post'>
+						  <form action='<?php echo base_url();?>index.php/Employee/updateData/view_employee/employee_details' method='post'>
 						  <input type='hidden' value='1' name='flag'>
 						  <input type='hidden' value="<?php echo $id; ?>" name='emp_id'>
 						 <button type='submit'  class='btn btn-sm btn-primary' ><span class='glyphicon glyphicon-ok'></span>Activate</button>
 						        </form>
 					 <?php  }
 					  else { ?>
-						  <form action='<?php echo base_url();?>index.php/Employee/updateData/view_employee' method='post'>
+						  <form action='<?php echo base_url();?>index.php/Employee/updateData/view_employee/employee_details' method='post'>
 						  <input type='hidden' value='0' name='flag'>
 						  <input type='hidden' value='<?php echo $id ?>' name='emp_id'>
 	
-						 <button type='submit'  class='btn btn-sm btn-danger' name='status'><span class='glyphicon glyphicon-remove'></span>De-activate</button>
+						 <button type='submit'  class='btn btn-sm btn-danger'><span class='glyphicon glyphicon-remove'></span>De-activate</button>
 						 </form>  
 				<?php	  }
 					  ?>
@@ -82,7 +82,7 @@
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Employee</center></h4>
                                           </div>
                                           <div class="modal-body">
-				<form name="<?php echo base_url();?>index.php/Employee/updateData/view_employee" id="data_form" method="post" action="">
+				<form name="<?php echo base_url();?>index.php/Employee/updateData/view_employee/employee_details" id="data_form" method="post" action="">
 				   <div class="col-md-6">
 		        	<div id="">
                       <label>IPPS NUMBER:  <span style="color:red">*</span></label> 

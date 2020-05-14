@@ -25,16 +25,17 @@ class Employee extends AndreController{
         $data['job']=$this->EmpData->getJobs();
 	return	$this->load_view('main',$data);
     }
-    public function updateData($template){
+    public function updateData($template,$table){
         $employee=$this->inputpost();
         $data['template']=$template;
-        $this->EmpData->updateData();
+        $data['msg']=$this->EmpData->updateData($table);
         $data['schedules']=$this->AttData->getSchedules();
         $data['employees']=$this->EmpData->viewEmpoyees();
         $data['dist']=$this->EmpData->getDistricts();
         $data['fac']=$this->EmpData->getFacilities();
         $data['depart']=$this->EmpData->getDeparts();
         $data['job']=$this->EmpData->getJobs();
+
 	return	$this->load_view('main',$data);
     }
 	public function viewEmployee(){

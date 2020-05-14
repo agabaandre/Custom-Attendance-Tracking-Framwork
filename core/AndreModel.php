@@ -48,6 +48,8 @@ class AndreModel extends DbConn{
 	   if($whereArgs)
 		$sql= $this->where($sql,$whereArgs);	
 		$sql=$this->appendSemicolon($sql);
+
+		//echo $sql;
 	    $result = $this->connection->query($sql);
 		if($result)
 			return $result;
