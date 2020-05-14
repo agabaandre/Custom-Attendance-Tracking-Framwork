@@ -8,11 +8,11 @@
         </a>
         <nav class="navbar navbar-static-top" role="navigation" style="background-image:url('assets/images/header_bg.png') 0 0; background-color:#7b9f0e; color:white;">
           <a href="#" class="" data-toggle="offcanvas">
-            <span class="" style="background: url(assets/images/scale.png) no-repeat; width:40px; height:40px; float:left; margin-left:2px; margin-top:7px;"></span>
+            <span class="" style="background:#003248 no-repeat; width:40px; height:40px; float:left; margin-left:2px; margin-top:7px;"></span>
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-              <li class="dropdown user user-menu">
+              <li class="dropdown user user-menu" style="background:#003248;">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url(); ?>assets/dist/img/login.png" class="user-image" alt="">
                   <span class="hidden-xs"><?php echo $_SESSION['name']; ?></span>
@@ -58,7 +58,7 @@
       <aside class="main-sidebar">
         <section class="sidebar">
           <div class="user-panel" style="font-size:0.9em; font-weight:bold; color:#FFFFFF; z-index:2;">
-              <p style="text-align:center;">Attendance Tracker</p>
+              <!-- <p style="text-align:center;">Attendance Tracker</p> -->
           </div>
           <ul class="sidebar-menu">
 		   <?php if (in_array($data['template'],array('home'))){
