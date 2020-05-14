@@ -238,7 +238,7 @@ var color=pickColor(duty);  //run update
                 id:id,
                 hpid: hpid,
                 duty:duty,
-                color: color
+				color: color
             }, function(result){
                 console.log(result);
                 $.notify("Update Finished", "info");

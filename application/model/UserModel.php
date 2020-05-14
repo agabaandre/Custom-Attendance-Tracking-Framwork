@@ -30,8 +30,8 @@ class UserModel extends AndreModel{
 	}
 	public function changePwd(){
 		$oldpwd=$this->inputpost('oldpwd');
-		$newpwd=sha1(md5($this->inputpost('newpwd')));
-		$realoldpwd=sha1(md5($oldpwd));
+		$newpwd=md5($this->inputpost('newpwd'));
+		$realoldpwd=md5($oldpwd);
 		$username=$this->inputpost('username');
 		$check=$this->get('array',"SELECT * from users where username='$username'");
 		foreach($check as $row){

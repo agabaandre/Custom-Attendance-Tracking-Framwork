@@ -31,7 +31,7 @@
 				   </div>
                    <div id="">
 					 <label>Default Password is  password</label> 
-                      <input class="form-control" name="password" id="" value="55c3b5386c486feb662a0785f340938f518d547f" placeholder="Password" type="hidden" required>
+                      <input class="form-control" name="password" id="" value="5f4dcc3b5aa765d61d8327deb882cf99" placeholder="Password" type="hidden" required>
 					</div>
 					<div id="">
 					  <label>User Type: *</label>
@@ -119,7 +119,7 @@ $users=$data['users'];
                   <div id="">
 					<label> NB: Password is reset to a system default password<br/>
 				     </label> 
-                     <input class="form-control" name="password" id="" style="width:100%;" value="55c3b5386c486feb662a0785f340938f518d547f" placeholder="" type="hidden">
+                     <input class="form-control" name="password" id="" style="width:100%;" value="5f4dcc3b5aa765d61d8327deb882cf99" type="hidden">
 					 <input class="form-control" name="uuid"  value="<?php echo $uuid;?>" placeholder="" type="hidden">
 				   </div>
 				   <div id="">

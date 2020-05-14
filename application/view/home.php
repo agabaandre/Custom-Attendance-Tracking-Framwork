@@ -8,7 +8,7 @@
                 </div>
         <div class="col-md-12">
            <?php $widgets=$data['widgets'];
-                 print_r($widgets);
+                // print_r($widgets);
                  $employees=$data['employees'];
            ?>
       <div class="row">
@@ -21,7 +21,7 @@
               <p>Total Staff</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="fa fa-users"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -31,11 +31,11 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-            <h3><?php echo $widgets['staff']; ?></h3>
-              <p>Bounce Rate</p>
+            <h3><?php echo $widgets['schedules']; ?></h3>
+              <p>Total Schedules</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fa fa-clock"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -45,12 +45,12 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-            <h3><?php echo $widgets['staff']; ?></h3>
+            <h3><?php echo $widgets['duty']; ?></h3>
 
-              <p>User Registrations</p>
+              <p>Scheduled This Month</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-calendar"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -59,16 +59,8 @@
     
       <!-- /.row -->
       <!-- Main row -->
-      <div class="col-md-12">
-         <div class="col-lg-6">
-			<p>Welcome</p>
-			<menu><p>You can:</p><li>Schedule Employees Work Days and Leave Days</li>
-			      <li>Generate work schedules of employees to follow</li>
-				  <li>View and share reports from the system by printing and electronic share methods</li>
-			<?php  ?>
-        	</div>	
-        </div>
-        <div class="col-lg-6">
+
+<div class="timeline-item">
 
         <table id="mydata" class="table table-bordered table-hover table-responsive">
                     <thead>
@@ -108,6 +100,9 @@
                     </tfoot>
     </table>
     </div>
+    </div>
+</div>
+</li>
         </div>
     </div>
 </div>
