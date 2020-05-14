@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/rosta.css">
 <div class="dashtwo-order-area" style="padding-top: 10px;">
   <div class="container-fluid">
       <div class="row">
@@ -87,7 +88,7 @@
 							//print_r($duties);   //carries report data
 							//print_r($matches);  //carries person's day's duty letter
 							// ?>
-						 <table id="mydata" class="table table-bordered table-responsive"> 
+						 <table id="mydata" class="minimalistBlack"> 
 							 <thead>
 							<tr>
 							    <th class="cell tbprimary"># <b id="name"></b></th>

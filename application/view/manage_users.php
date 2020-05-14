@@ -5,24 +5,33 @@
              <ul class="nav nav-tabs">
 			      <li class="active"><a href="<?php echo base_url();?>index.php/Users/getUsers">Manage Users</a></li>
 			      <!-- <li class=""><a href="<?php echo base_url();?>index.php/Users/getLogs">User Logs</a></li>
-				   -->
+-->
                  </ul>
 				</div>
                 <div class="box-header with-border">
                   <h5 class="box-title">Manage Users</h5>
                 </div>
 </div>
+									
  <hr style="border:1px solid rgb(140, 141, 137);"/>
+
+ 									<?php 
+									if(isset($data['msg'])){
+                                      echo'<div id="alert" class="alert alert-success alert-dismissable">
+                                      <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                      <strong>'.$data['msg'].'</strong>
+                                      </div>';
+                                    }  ?>
   <div class="col-md-4">
       <p>Add Users</p>
-	          <form method="post" action="" autocomplte="off">
+	          <form method="post" action="<?php echo base_url();?>index.php/Users/addUser" autocomplte="off">
 	  	             <div id="">
 					<label>Username: *</label>
                       <input class="form-control" name="username" id="title" value="" placeholder="Username" type="text" required>
 				   </div>
                    <div id="">
-					 <label>Password: *</label> 
-                      <input class="form-control" name="password" id="" value="" placeholder="Password" type="password" required>
+					 <label>Default Password is  password</label> 
+                      <input class="form-control" name="password" id="" value="55c3b5386c486feb662a0785f340938f518d547f" placeholder="Password" type="hidden" required>
 					</div>
 					<div id="">
 					  <label>User Type: *</label>
@@ -37,16 +46,17 @@
 				   </div>
 				   <div id="">
 					  <label>Name: *</label>
-                      <input type="text" class="form-control" name="lname" id="" value="" placeholder="Surname" type="text"/ required>
+                      <input type="text" class="form-control" name="name" id="" value="" placeholder="Name" type="text" required>
 				   </div>
 				     <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
-                     <button  class="btn btn-primary" name="add_user" type="submit" ><span class="add"></span>Add User</button>
+                     <button  class="btn btn-primary" type="submit" ><span class="add"></span>Add User</button>
                      </form>
 				   </div>
    </div>
 <div class="col-md-8"> 
 <div id="CollapsiblePanel1" class="CollapsiblePanel" style="margin:0 auto; overflow-x:hidden; overflow-y:auto;">
-  <div class="CollapsiblePanelTab" tabindex="0"><p>View System Users</p></div>
+								
+<div class="CollapsiblePanelTab" tabindex="0"><p>View System Users</p></div>
 <div class="CollapsiblePanelContent"> 
       <table id="mydata" class="table table-bordered table-responsive">
                     <thead>
@@ -71,24 +81,23 @@ $users=$data['users'];
 	    <td>
 	<?php
                        //Flag Raiser
-					  $status=$row['flag'];
+					  $status=$row['status'];
 				   $space="----|";
-					  if ($status==0){
-						  echo "<form action='' method='post'>
-						  <input type='hidden' value='1' name='flag'>
-						  <input type='hidden' value='$uuid' name='user_id'>
-						  <input type='hidden' value='Activated' name='msg'>
-						 <button type='submit'  class='btn btn-sm btn-danger' name='status'><span class='glyphicon glyphicon-circle-remove'></span>Not Active</button>
-						        </form>";
-					  }
-					  else {
-						 echo "<form action='' method='post'>
-						  <input type='hidden' value='0' name='flag'>
-						  <input type='hidden' value='$uuid' name='user_id'>
-						  <input type='hidden' value='De-activated' name='msg'>
-						 <button type='submit' name='change_flag' class='btn btn-sm btn-success' name='status'><span class='glyphicon glyphicon-ok'></span>Active</button>
-						 </form>";   
-					  }
+					  if ($status==0){ ?>
+						  <form action='<?php echo base_url();?>index.php/Users/updateUser' method='post'>
+						  <input type='hidden' value="1" name='status'>
+						  <input type='hidden' value='<?php echo $uuid; ?> ' name='uuid'>
+						 <button type='submit'  class='btn btn-sm btn-danger' ><span class='glyphicon glyphicon-circle-remove'></span>Not Active</button>
+						        </form>
+					<?php  } 
+					  else { ?>
+						<form action='<?php echo base_url();?>index.php/Users/updateUser' method='post'>
+						  <input type='hidden' value="0" name='status'>
+						  <input type='hidden' value='<?php echo $uuid; ?>' name='uuid'>
+						 <button type='submit'  class='btn btn-sm btn-success' ><span class='glyphicon glyphicon-ok'></span>Active</button>
+						 </form> 
+					<?php  }
+					  
 					  ?>
 		</td>
 	<td>
@@ -102,15 +111,15 @@ $users=$data['users'];
                                               <h4 class="modal-title"><center><i class=""></i>Edit User Details</center></h4>
                                           </div>
                                           <div class="modal-body">
-	            <form method="post" action="">
+	            <form method="post" action="<?php echo base_url();?>index.php/Users/updateUser">
 	  	           <div id="">
 					<label>Username: *</label>
                       <input class="form-control" name="username" id="title" value="<?php echo $row['username'];?>" placeholder="Surname" type="text" style="width:100%;" readonly>
 				  </div>
                   <div id="">
-					 <label> NB: Leave blank to keep the previous password<br/>
-				     New Password: *</label> 
-                     <input class="form-control" name="password" id="" style="width:100%;" value="" placeholder="" type="password">
+					<label> NB: Password is reset to a system default password<br/>
+				     </label> 
+                     <input class="form-control" name="password" id="" style="width:100%;" value="55c3b5386c486feb662a0785f340938f518d547f" placeholder="" type="hidden">
 					 <input class="form-control" name="uuid"  value="<?php echo $uuid;?>" placeholder="" type="hidden">
 				   </div>
 				   <div id="">
@@ -127,7 +136,7 @@ $users=$data['users'];
 				   </div>
 				    <div id="">
 					  <label>Name:</label>
-                      <input class="form-control" style="width:100%;" name="lname" id="" value="<?php echo $row['name']?>" placeholder="" type="text">
+                      <input class="form-control" style="width:100%;" name="name" id="" value="<?php echo $row['name']?>" placeholder="" type="text">
 				   </div>
 				     <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
                      <button  class="btn btn-primary" name="" type="submit" ><span class="add"></span>Update User</button>

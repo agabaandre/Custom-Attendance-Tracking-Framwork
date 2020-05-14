@@ -13,8 +13,16 @@ class Users extends AndreController{
 	$this->load_view('main',$data);
     }
 	public function addUser(){
-		$post=$this->inputpost('input1');
-		print_r($post);
+        $data['msg']=$this->UserData->addUsers();
+        $data['users']=$this->UserData->getUsers();
+        $data['template']='manage_users';
+        $this->load_view('main',$data);
+    }
+    public function updateUser(){
+        $data['msg']=$this->UserData->updateUsers();
+        $data['users']=$this->UserData->getUsers();
+        $data['template']='manage_users';
+        $this->load_view('main',$data);
     }
     public function newPwd(){
         $data['template']='change_password';
@@ -25,9 +33,6 @@ class Users extends AndreController{
         $data['msg']=$this->UserData->changePwd();
         return  $this->load_view('main',$data);
 	}
-    public function changeState(){
-        $post=$this->inputpost('input1');
-	print_r($post);
-	}
+   
 }
 ?>

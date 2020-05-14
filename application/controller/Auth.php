@@ -23,6 +23,7 @@ class Auth extends AndreController{
 	public function authenticate(){
 		$username=$this->inputpost('username');
 		$password=$this->inputpost('password');
+		$data['employees']=$this->EmpData->viewEmpoyees();
 		$userdata=$this->UserData->authenticate($username,sha1(md5($password)));
 		foreach($userdata as $user){
 			 $uuid=$user['uuid'];

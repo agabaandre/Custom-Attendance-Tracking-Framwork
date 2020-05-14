@@ -8,6 +8,26 @@ class UserModel extends AndreModel{
 		$result=$this->get('array','select * from users');
 		return $result;	
 	}
+	public function addUsers(){
+		$data=$this->inputpost();
+		$result=$this->insert('users',$data);
+		if($result){
+		return 'Added Successfully';	 
+		}
+		else{
+		return 'Failed';
+		}
+	}
+	public function updateUsers(){
+		
+		$result=$this->update('users',$this->inputpost(),array('uuid'=>$this->inputpost('uuid')));
+		if($result){
+		return 'Successfull';	 
+		}
+		else{
+		return 'Failed';
+		}
+	}
 	public function changePwd(){
 		$oldpwd=$this->inputpost('oldpwd');
 		$newpwd=sha1(md5($this->inputpost('newpwd')));

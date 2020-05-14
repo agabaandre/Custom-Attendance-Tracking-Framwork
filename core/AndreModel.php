@@ -7,12 +7,19 @@ class AndreModel extends DbConn{
 		 $this->connection= $dbcon->dbconnection();
 		$mysqli=$this->connection;
 	}
+	public function environment(){
+		//use debug or prod to turn on or off the queries
+		$environment='production';
+	return $environment;
+	}
 	//use for delete, update, insert sql raw queries that dont return result
 	//example: $this->rawquery('Delete from users where uuid=1");
 	function rawquery($sql){
 		$sql=$this->appendSemicolon($sql);
 		$result = $this->connection->query($sql);
-		//  echo $sql;
+		if($this->environment()=='debug'){
+		echo $sql;
+		}
 		if($result)
 		return 'SUCCESS';
 		else
@@ -30,8 +37,10 @@ class AndreModel extends DbConn{
 		$sql .= '\''.$value.'\',';
 		$sql=rtrim($sql,',');
 		$sql.=')';
-		//echo $sql;
 		$sql=$this->appendSemicolon($sql);
+		if($this->environment()=='debug'){
+		echo $sql;
+		}
 		$result = $this->connection->query($sql);
 		if($result)
 			return $result;
@@ -48,8 +57,9 @@ class AndreModel extends DbConn{
 	   if($whereArgs)
 		$sql= $this->where($sql,$whereArgs);	
 		$sql=$this->appendSemicolon($sql);
-
-		//echo $sql;
+		if($this->environment()=='debug'){
+		echo $sql;
+		}
 	    $result = $this->connection->query($sql);
 		if($result)
 			return $result;
@@ -61,10 +71,13 @@ class AndreModel extends DbConn{
    	    $sql='DELETE FROM '.$tableName;
 	   if($whereArgs)
 	   	$sql=$this->where($sql,$whereArgs);
-	   	$sql=$this->appendSemicolon($sql);
-	  	 $result = $this->connection->query($sql);
+		$sql=$this->appendSemicolon($sql);
+		if($this->environment()=='debug'){
+		echo $sql;
+		}
+	  	$result = $this->connection->query($sql);
 		if($result)
-			return $result;
+		return $result;
 		else
 		return 'Failed SQL ERROR';
    }
@@ -83,7 +96,9 @@ class AndreModel extends DbConn{
 	//example: $result=$this->get("array","SELECT * FROM users");
 	function get($type,$query){
 		$sql=$this->appendSemicolon($query);
-		//echo '<br>'. $sql;
+		if($this->environment()=='debug'){
+		echo $sql;
+		}
 		$array=array();
 		$result = $this->connection->query($sql);
 		if($result){
@@ -103,25 +118,31 @@ class AndreModel extends DbConn{
 		}
          //Get the rows affted after running a query
 		//Usage: $affectedrows = $this->affected_rows();
-		function affected_rows(){
-			$data=$this->connection->affected_rows;
-			return $data;
+	function affected_rows(){
+		$data=$this->connection->affected_rows;
+		if($this->environment()=='debug'){
+			echo $data;
 		}
+		return $data;
+	}
 		// counts number of rows in  a result set from a run query.
 		//$this->num_rows($sqlresult)
-		function num_rows($sqlresult){
+	function num_rows($sqlresult){
 			$results=$this->connection->query($sqlresult);
 			$data=$results->num_rows;
+			if($this->environment()=='debug'){
+				echo $data;
+			}
 			return $data;
-		}
+	}
 		//close a db connection;
-		public function dbclose()
+	public function dbclose()
 		{
 		return	$this->connection->close();
-		}
+	}
 		//this process form postinputs
 		//instead of running $_POST['name]; you can run $this->inputpost('name);
-		public function inputpost($fieldname=FALSE){
+	public function inputpost($fieldname=FALSE){
 			$sqlines=array('SELECT','select','Select','UPDATE','Update','update','DELETE',
 			'Delete','delete','*','union','UNION','WHERE','where','AS','as','As','aS','#',
 			'?','%','%%','??','$$','$','+','(',')','!','^','=');
@@ -134,10 +155,13 @@ class AndreModel extends DbConn{
 			$result=($_POST);
 			$fresult=str_replace($sqlines,'',$result);
 			}
+			if($this->environment()=='debug'){
+				echo $fresult;
+			}
 		return $fresult;
 		}
 		//works like above but use it for data sources you are sure of
-		public function inputpost_clean($fieldname=FALSE){
+	public function inputpost_clean($fieldname=FALSE){
 			if($fieldname){
 			// remove sql key statements
 			$result=($_POST[$fieldname]);
@@ -147,8 +171,11 @@ class AndreModel extends DbConn{
 			$result=($_POST);
 			$fresult=$result;
 			}
+			if($this->environment()=='debug'){
+				echo $fresult;
+		   }
 		return $fresult;
-		}
+	}
 	
 }
 		
