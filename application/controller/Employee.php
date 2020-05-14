@@ -8,11 +8,11 @@ class Employee extends AndreController{
         $this->AttData=new AttendanceModel();
 	}
 	public function addEmployee(){
-    $data['template']='add_employee';
-    $data['dist']=$this->EmpData->getDistricts();
-    $data['fac']=$this->EmpData->getFacilities();
-    $data['depart']=$this->EmpData->getDeparts();
-    $data['job']=$this->EmpData->getJobs();
+        $data['template']='add_employee';
+        $data['dist']=$this->EmpData->getDistricts();
+        $data['fac']=$this->EmpData->getFacilities();
+        $data['depart']=$this->EmpData->getDeparts();
+        $data['job']=$this->EmpData->getJobs();
 	return	$this->load_view('main',$data);
     }
     public function insertEmployee(){
@@ -76,7 +76,7 @@ class Employee extends AndreController{
     public function import(){
         $csvMimes = array('application/vnd.ms-excel','text/plain','text/csv','text/tsv');
         if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'],$csvMimes)){
-            if(is_uploaded_file($_FILES['file']['tmp_name'])){
+        if(is_uploaded_file($_FILES['file']['tmp_name'])){
         $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
         fgetcsv($csvFile);
         while(($line = fgetcsv($csvFile)) !== FALSE){
