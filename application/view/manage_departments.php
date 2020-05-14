@@ -48,12 +48,19 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
 						<th>Edit / Delete</th>
                       </tr>
                     </thead>
-                    <tbody>
-					<?php 
-        //  print_r($data);
-          $i=1;
-          foreach($data['dbset'] as $row){
+                    <tbody> 
+                     <?php 
+                    //  print_r($data);
+                      $i=1;
+                      if(empty($data['dbset'])){
+                        $rows=$data['depart'];
+                      }
+                      else{
+                      $rows = $data['dbset'];
+                      }
+                      foreach($rows as $row){
                     ?>
+
                     <tr>
                     <td><?php echo $i++;?></td>
             <td><?php echo $row['name'];?></td>
@@ -70,10 +77,10 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Department</center></h4>
                                           </div>
                                           <div class="modal-body">
-              <form action="<?php echo base_url();?>index.php/Employee/addData/departments/manage_departments" method="post" enctype="multipart/form-data" >
+              <form action="<?php echo base_url();?>index.php/Employee/updateData/manage_departments/departments" method="post" enctype="multipart/form-data" >
               <label>Department:</label>
               <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" style="width:100%;">
-              <input class="form-control" name="id2"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
+              <input class="form-control" name="id"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
 <button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update Department</button>
 </form>
                                          </div>
