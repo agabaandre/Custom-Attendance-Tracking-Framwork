@@ -49,23 +49,23 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                       </tr>
                     </thead>
                     <tbody>
-					<?php 
-        //  print_r($data);
-          $i=1;
-          if(empty($data['dbset'])){
-            $rows=$data['dist'];
-           }
-          else{
-           $rows = $data['dbset'];
-          }
-          foreach($rows as $row){
-                    ?>
+                    <?php 
+                  //  print_r($data);
+                    $i=1;
+                    if(empty($data['dbset'])){
+                      $rows=$data['dist'];
+                    }
+                    else{
+                    $rows = $data['dbset'];
+                    }
+                    foreach($rows as $row){
+                              ?>
                     <tr>
                     <td><?php echo $i++;?></td>
             <td><?php echo $row['name'];?></td>
                        <td>
 	<button data-toggle="modal" data-target="#<?php echo $modalid='my'.$row['id'];?>" title="Update district Details" class="btn btn-sm btn-info"><i class="edit"></i>Edit</button>
-	<form action="<?php echo base_url();?>index.php/Employee/updateData/view_employee/employee_details" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
+	<form action="<?php echo base_url();?>index.php/Employee/deleteData/district/manage_district" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
 	<!-- <button  type="submit" title="On click, this record will be deleted!" class="btn btn-sm btn-danger" style="float:left;"><i class="delete"></i>Delete</button>		            -->
 	</form>
 			<div class="modal fade" id="<?php echo $modalid;?>" tabindex="-1" role="dialog" data-backdrop="static">
