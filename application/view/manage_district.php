@@ -52,14 +52,20 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
 					<?php 
         //  print_r($data);
           $i=1;
-          foreach($data['dbset'] as $row){
+          if(empty($data['dbset'])){
+            $rows=$data['dist'];
+           }
+          else{
+           $rows = $data['dbset'];
+          }
+          foreach($rows as $row){
                     ?>
                     <tr>
                     <td><?php echo $i++;?></td>
             <td><?php echo $row['name'];?></td>
                        <td>
 	<button data-toggle="modal" data-target="#<?php echo $modalid='my'.$row['id'];?>" title="Update district Details" class="btn btn-sm btn-info"><i class="edit"></i>Edit</button>
-	<form action="<?php echo base_url();?>index.php/Employee/deleteData/district/manage_district" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
+	<form action="<?php echo base_url();?>index.php/Employee/updateData/view_employee/employee_details" method="post" style="width:40px;"><input type="hidden" name="id" value="<?php echo $row['id'];?>"/>
 	<!-- <button  type="submit" title="On click, this record will be deleted!" class="btn btn-sm btn-danger" style="float:left;"><i class="delete"></i>Delete</button>		            -->
 	</form>
 			<div class="modal fade" id="<?php echo $modalid;?>" tabindex="-1" role="dialog" data-backdrop="static">
@@ -70,11 +76,11 @@ $("#alert").fadeTo(2000, 500).slideUp(500, function(){
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update district</center></h4>
                                           </div>
                                           <div class="modal-body">
-              <form action="<?php echo base_url();?>index.php/Employee/addData/district/manage_district" method="post" enctype="multipart/form-data" >
+              <form action="<?php echo base_url();?>index.php/Employee/updateData/manage_district/district" method="post" enctype="multipart/form-data" >
               <label>district:</label>
               <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>" style="width:100%;">
-              <input class="form-control" name="id2"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
-<button type="submit"  class="btn btn-primary"><i class="add" style="margin-top:4px;"></i>Update district</button>
+              <input class="form-control" name="id"  value="<?php echo $row['id'];?>" placeholder="" type="hidden"/>
+<button type="submit"  class="btn btn-primary"><i  style="margin-top:4px;"></i>Update district</button>
 </form>
                                          </div>
                                       </div>
