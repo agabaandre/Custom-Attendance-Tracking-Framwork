@@ -1,9 +1,11 @@
 <?php
 require_once(__DIR__.'/../model/EmployeeModel.php');
+require_once(__DIR__.'/../model/AttendanceModel.php');
 require_once(__DIR__.'/../../core/AndreController.php');
 class Employee extends AndreController{
 	function __construct(){
         $this->EmpData=new EmployeeModel();
+        $this->AttData=new AttendanceModel();
 	}
 	public function addEmployee(){
     $data['template']='add_employee';
@@ -17,6 +19,18 @@ class Employee extends AndreController{
         $employee=$this->inputpost();
         $data['template']='add_employee';
         $this->EmpData->saveEmployee($employee);
+        $data['dist']=$this->EmpData->getDistricts();
+        $data['fac']=$this->EmpData->getFacilities();
+        $data['depart']=$this->EmpData->getDeparts();
+        $data['job']=$this->EmpData->getJobs();
+	return	$this->load_view('main',$data);
+    }
+    public function updateData($template){
+        $employee=$this->inputpost();
+        $data['template']=$template;
+        $this->EmpData->updateData();
+        $data['schedules']=$this->AttData->getSchedules();
+        $data['employees']=$this->EmpData->viewEmpoyees();
         $data['dist']=$this->EmpData->getDistricts();
         $data['fac']=$this->EmpData->getFacilities();
         $data['depart']=$this->EmpData->getDeparts();

@@ -28,6 +28,20 @@ class EmployeeModel extends AndreModel{
     return 'Success';
     }
     }
+    function updateData($table,$sdata){
+      $data=$this->inputpost();
+      if ($table=='employee_details'){
+        $where=$this->inputpost('emp_id');
+      }
+      else{
+        $where=$this->inputpost('id');
+      }
+      $query=$this->update($table,$sdata);
+      if($query)
+     {
+     return 'Success';
+     }
+     }
     function deleteData($table,$id){
      $query=$this->delete($table,$id);
       if($query)

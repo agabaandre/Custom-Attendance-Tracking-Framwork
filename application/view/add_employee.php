@@ -14,9 +14,8 @@ $('.datepicker').datepicker({
                 <div class="box-header with-border">
                   <h5 class="box-title">Register Employee</h5>
                 </div>
-		        <?php
-                   echo notification($data);  ?>			
-<div class="col-md-4">
+		    			
+				<div class="col-md-4">
 				<form name="" id="data_form" method="post" action="<?php echo base_url();?>index.php/Employee/insertEmployee">
 		        	<div id="">
                       <label>IPPS NUMBER:  <span style="color:red">*</span></label> 

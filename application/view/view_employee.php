@@ -6,6 +6,14 @@
                        </ul>
 				</div>
 <div class="col-md-12 offset-2" style="width:100%; overflow:auto; margin:0 auto;">
+<?php
+                                      if(isset($data['msg'])){
+                                      echo'<div id="alert" class="alert alert-success alert-dismissable">
+                                      <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                      <strong>'.$data['msg'].'</strong>
+                                      </div>';
+                                            }
+  ?>
 <hr style="border:1px solid rgb(140, 141, 137);">
 	 <table id="mydata" class="table table-bordered table-hover table-responsive">
                     <thead>
@@ -34,7 +42,7 @@
 						   <td><?php echo $row['hris_pid']; ?></td>
                         <!-- <td><img src="modules/employee_details/getImage.php?id=<?php //echo $row["emp_id"];?>" class="img img-thumbnail" style="width:80px; height:80px;"/></td>
                        -->
-					  <td><img src="<?php echo base_url();?>assets/images/no_pic.png" href="dashboard.php?action=passport" class="img img-thumbnail" style="width:25px; height:25px;"/></td>';
+					  <td><img src="<?php echo base_url();?>assets/images/no_pic.png" href="#" class="img img-thumbnail" style="width:25px; height:25px;"/></td>';
                        <td> <?php echo $myname=$row['Surname']." ".$row['Firstname']." ".$row['Othername'];?></td>
                        <td> <?php echo $row['contact'];?></td>
                        <td> <?php echo $job=$row['Position'];?></td>
@@ -47,22 +55,21 @@
                        //Flag Raiser
 					  $status=$row['flag'];
 				   $space="----|";
-					  if ($status==0){
-						  echo "<form action='' method='post'>
+					  if ($status==0){ ?>
+						  <form action='<?php echo base_url();?>index.php/Employee/updateData/view_employee' method='post'>
 						  <input type='hidden' value='1' name='flag'>
-						  <input type='hidden' value='$id' name='emp_id'>
-						  <input type='hidden' value='$myname Attendance Access Re-activated' name='msg'>
-						 <button type='submit'  class='btn btn-sm btn-primary' name='status'><span class='glyphicon glyphicon-ok'></span>Activate</button>
-						        </form>";
-					  }
-					  else {
-						 echo "<form action='' method='post'>
+						  <input type='hidden' value="<?php echo $id; ?>" name='emp_id'>
+						 <button type='submit'  class='btn btn-sm btn-primary' ><span class='glyphicon glyphicon-ok'></span>Activate</button>
+						        </form>
+					 <?php  }
+					  else { ?>
+						  <form action='<?php echo base_url();?>index.php/Employee/updateData/view_employee' method='post'>
 						  <input type='hidden' value='0' name='flag'>
-						  <input type='hidden' value='$id' name='emp_id'>
-						  <input type='hidden' value='$myname Attendance Access De-activated' name='msg'>
-						 <button type='submit' name='change_flag' class='btn btn-sm btn-danger' name='status'><span class='glyphicon glyphicon-remove'></span>De-activate</button>
-						 </form>";   
-					  }
+						  <input type='hidden' value='<?php echo $id ?>' name='emp_id'>
+	
+						 <button type='submit'  class='btn btn-sm btn-danger' name='status'><span class='glyphicon glyphicon-remove'></span>De-activate</button>
+						 </form>  
+				<?php	  }
 					  ?>
 					  </td>
 		              <td>
@@ -75,7 +82,7 @@
                                               <h4 class="modal-title"><center><i class="fa fa-user fa-spin"></i>Update Employee</center></h4>
                                           </div>
                                           <div class="modal-body">
-				<form name="" id="data_form" method="post" action="">
+				<form name="<?php echo base_url();?>index.php/Employee/updateData/view_employee" id="data_form" method="post" action="">
 				   <div class="col-md-6">
 		        	<div id="">
                       <label>IPPS NUMBER:  <span style="color:red">*</span></label> 
@@ -83,11 +90,11 @@
 					</div>
 					<div id="">
                       <label>iHRIS ID:  <span style="color:red"></span></label> 
-                      <input style="width:100%;" class="form-control" name="ihris_id" id="ihris_id" value="<?php echo $row['hris_pid'];?>" type="number">
+                      <input style="width:100%;" class="form-control" name="hris_pid" id="ihris_id" value="<?php echo $row['hris_pid'];?>" type="number">
 					</div>
 					<div id="">
                       <label>National ID:  <span style="color:red"></span></label> 
-                      <input style="width:100%;" class="form-control" name="nin" id="studid" value="<?php echo $row['national_id'];?>" type="text">
+                      <input style="width:100%;" class="form-control" name="national_id" id="studid" value="<?php echo $row['national_id'];?>" type="text">
 					</div>
 				<div id="">
 					  <label>Surname:  <span style="color:red">*</span></label>
@@ -99,13 +106,13 @@
 					</div>
 					<div id="">
 					  <label>Other Name: </label>
-                      <input style="width:100%;" class="form-control" name="oname" id="othername" value="<?php echo $row['Othername'];?>" placeholder="Other Name"type="text">
+                      <input style="width:100%;" class="form-control" name="Othername" id="othername" value="<?php echo $row['Othername'];?>" placeholder="Other Name"type="text">
 				   </div>
 				</div>
 				<div class="col-md-6">
 				    <div id="">
                       <label>Mobile Contact:  <span style="color:red"></span></label>
-				      <input  style="width:100%;" class="form-control" name="Contact" id="Contact" value="<?php echo $row['contact'];?>" placeholder="Contact" type="tel"/>
+				      <input  style="width:100%;" class="form-control" name="contact" id="Contact" value="<?php echo $row['contact'];?>" placeholder="Contact" type="tel"/>
 			       </div>	
 				   <?php	
 					$i=1;
@@ -116,7 +123,7 @@
 					?>
 				   <div id="">
                       <label style="width:100%;">Job: <span style="color:red">*</span></label> 
-					            <select name="district" class="form-control select2" style="width:100%;">
+					            <select name="Position" class="form-control select2" style="width:100%;">
                           <?php foreach($jobdata as $list1){ ?>
 							  <option value="<?php echo $active_op=$list1['name']; ?>"<?php if ($job==$active_op){echo "selected";}?>><?php  echo $list1['name']; ?>
 							  </option>
@@ -143,7 +150,7 @@
 				   </div>
 				   	   <div id="">
                       <label style="width:100%;">Department: <span style="color:red">*</span></label> 
-                       <select name="facility" class="form-control select2" style="width:100%;">
+                       <select name="Department" class="form-control select2" style="width:100%;">
 						 <?php foreach($departmentdata as $list2){ ?>
 							<option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
 							  <option value="<?php echo $active_op=$list2['name']; ?>"<?php if ($department==$active_op){echo "selected";}?>><?php  echo $list2['name']; ?>
@@ -153,7 +160,7 @@
 				   </div>
 				</div>
 			       <div id="footer-buttons" style="clear:both; margin-top:20px; margin-bottom:4px;">
-                     <button  class="btn btn-primary" name="update_employee" type="submit" ><span class="glyphicon glyphicon-edit"></span>Update Employee</button>
+                     <button  class="btn btn-primary"  type="submit" ><span class="glyphicon glyphicon-edit"></span>Update Employee</button>
                      </form>
 				   </div>	  
                                          </div>
