@@ -32,7 +32,7 @@ class Attendance extends AndreController {
 			$data['matches']=$this->AttData->matches();
 			$data['tab_schedules']=$this->AttData->tab_matches();
 			$data['facilities']=$this->EmpData->getFacilities();
-			$data['template']="duty_report";
+			$data['template']="roster_report";
 			$this->load_view('main',$data);
 	}
 	Public function summaryReport(){

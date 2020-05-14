@@ -1,9 +1,13 @@
 <?php
 require_once(__DIR__.'/../model/AuthModel.php');
 require_once(__DIR__.'/../../core/AndreController.php');
+require_once(__DIR__.'/../model/EmployeeModel.php');
+require_once(__DIR__.'/../model/AttendanceModel.php');
 class Auth extends AndreController{
 	function __construct(){
 		$this->UserData=new AuthModel();
+		$this->AttData=new AttendanceModel();
+		$this->EmpData=new EmployeeModel();	
 	}
 	public function login(){
 	   $data['template']='login';
@@ -11,6 +15,9 @@ class Auth extends AndreController{
 	}
 	public function home(){
 		$data['template']='home';
+		$data['employees']=$this->EmpData->viewEmpoyees();
+		$data['widgets']=$this->AttData->widget_data();
+		
 	 return	$this->load_view('main',$data);
 	 }
 	public function authenticate(){
@@ -28,6 +35,7 @@ class Auth extends AndreController{
 			$_SESSION['usertype']=$usertype;
 			$_SESSION['name']=$name;
 			$_SESSION['uuid']=$uuid;
+			$data['widgets']=$this->AttData->widget_data();
 			$data['template']='home';
 			$this->load_view('main',$data);
 		}

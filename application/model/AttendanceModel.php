@@ -9,14 +9,13 @@ class AttendanceModel extends AndreModel{
 	    return $rows;
 	}
 	public function widget_data(){
-			$query1=$this->get('array',"select count(schedules.id) as schedules from schedules ");
+			$query1=$this->get('object',"select count(schedules.id) as schedules from schedules ");
 			$schedules=$query1[0]->schedules;
-			$query3=$this->get('array',"select count(employee_details.emp_id) as staff from employee_details");
+			$query3=$this->get('object',"select count(employee_details.emp_id) as staff from employee_details");
 			$staff=$query3[0]->staff;
 			$date=date('Y-m');  
 			//number  of all employees who worked
-			$query4=$this->get('array',"select count(distinct dutyreport.emp_id) as duty from dutyreport where  duty_date like '$date%'");
-			$result4=$query4->result();
+			$query4=$this->get('object',"select count(distinct dutyreport.emp_id) as duty from dutyreport where  duty_date like '$date%'");
 			$scheduled=$query4[0]->duty;
 			$result=array("schedules"=>$schedules,"users"=>$users,"staff"=>$staff,"duty"=>$scheduled);
 		return $result;
@@ -55,7 +54,8 @@ class AttendanceModel extends AndreModel{
 			else{
 				$valid_range=$date_range;
 			}
-			$res='select entry_id from duty_rosta';
+			//check if there schedules to pass
+			$res="select entry_id from duty_rosta where duty_date like'$valid_range%'";
 			$rowno=$this->num_rows($res);
 			if($rowno<1){
 			$data=$this->get("array","select distinct employee_details.emp_id,Surname as fullname,Position from schedules,employee_details");
