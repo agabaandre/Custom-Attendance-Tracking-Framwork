@@ -12,7 +12,7 @@
 		//controllers
 		//Example $array('Auth','User');
 		$controllers=array ('Auth','Employee','Users','Attendance');
-		autoload($controllers);
+		load_controller($controllers);
 function initArgument($uri){
 		foreach ($uri as $key => $value){
 			if($value == 'index.php'){
