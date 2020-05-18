@@ -2,6 +2,7 @@
 		require_once(__DIR__.'/../model/EmployeeModel.php');
 		require_once(__DIR__.'/../model/AttendanceModel.php');
 		require_once(__DIR__.'/../../core/AndreController.php');
+
 class Attendance extends AndreController {
 	public  function __construct(){
 		$this->EmpData=new EmployeeModel();	
