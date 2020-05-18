@@ -9,6 +9,7 @@ class AuthModel extends AndreModel{
 	function authenticate($username, $password){
 		$result=$this->get("array","select * from users where username='$username' and password='$password' and status=1");
 		if($result){
+			
 		return $result;
 		}
 		else{

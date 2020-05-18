@@ -50,9 +50,6 @@ class Auth extends AndreController{
 		$data=['Log Out Successful'];
 		$this->load_view('login',$data);
 	}
-	public function addUser_post(){
-		$post=$this->inputpost('input1');
-		print_r($post);
-	}
+
 }
 ?>
