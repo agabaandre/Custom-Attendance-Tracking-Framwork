@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/database/DbConn.php');
 class AndreModel extends DbConn{
+	
 	public function __construct()
     {
 		$dbcon = new DbConn();
@@ -139,10 +140,17 @@ class AndreModel extends DbConn{
 	public function dbclose()
 		{
 		return	$this->connection->close();
+		
 	}
-		//this process form postinputs
+	public function helpers(){
+
+	return	require_once(__DIR__.'/../config/helpers.php');
+
+	}
+	
+	//this process form postinputs
 		//instead of running $_POST['name]; you can run $this->inputpost('name);
-	public function inputpost($fieldname=FALSE){
+  function inputpost($fieldname=FALSE){
 			$sqlines=array('SELECT','select','Select','UPDATE','Update','update','DELETE',
 			'Delete','delete','*','union','UNION','WHERE','where','AS','as','As','aS','#',
 			'?','%','%%','??','$$','$','+','(',')','!','^','=');
@@ -161,7 +169,7 @@ class AndreModel extends DbConn{
 		return $fresult;
 		}
 		//works like above but use it for data sources you are sure of
-	public function inputpost_clean($fieldname=FALSE){
+ function inputpost_clean($fieldname=FALSE){
 			if($fieldname){
 			// remove sql key statements
 			$result=($_POST[$fieldname]);
@@ -176,7 +184,41 @@ class AndreModel extends DbConn{
 		   }
 		return $fresult;
 	}
-	
+        //helps in navigation
+        //usage: call the function and the name path to the file
+        // include(systempath().application/views/home.php
+    function system_path(){
+            $variable = $_SERVER['DOCUMENT_ROOT'];
+            $variable .= $_SERVER['PHP_SELF'];
+            $npath = substr($variable, 0, strpos($variable, "index.php"));
+            return $npath;
+        }
+        // run only in models or controllers
+        //you can access using the name within the class loading e.g $this->Attendance if the 
+        //load like $this->load_controller('Attendance');
+    function load_controller($name){
+        $variable = $_SERVER['DOCUMENT_ROOT'];
+        $variable .= $_SERVER['PHP_SELF'];
+        $npath = substr($variable, 0, strpos($variable, "index.php"));
+        if(!empty($name)){
+            foreach ($name as $controller) {
+                include($npath.'application/controller/'.$controller.'.php'); $controller = new $controller;
+            }
+           
+        }
+    }
+    // run only in models or controllers
+    function load_model($name=NULL){
+        $variable = $_SERVER['DOCUMENT_ROOT'];
+        $variable .= $_SERVER['PHP_SELF'];
+        $npath = substr($variable, 0, strpos($variable, "index.php"));
+        if(!empty($name)){
+            foreach ($name as $controller) {
+                include($npath.'application/model/'.$model.'.php'); $model = new $model;
+            }
+           
+        }
+    }
 }
 		
 		?>
