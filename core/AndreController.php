@@ -9,4 +9,5 @@ class AndreController extends AndreModel{
 	return	require_once(__DIR__.'/../application/view/'.$view.'.php');
 	}
 }
+
 ?>
