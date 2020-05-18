@@ -37,7 +37,7 @@ class Attendance extends AndreController {
 			$this->load_view('main',$data);
 	}
 	Public function summaryReport(){
-			$data['sums']=$this->AttData->fetchsums();
+			$data['sums']=$this->AttData->fetchReport();
 			$data['facilities']=$this->EmpData->getFacilities();
 			$data['template']='roster_summary';
 			$this->load_view('main',$data);
