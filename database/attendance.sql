@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 19, 2020 at 12:56 AM
+-- Generation Time: May 19, 2020 at 12:58 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -302,17 +302,6 @@ CREATE TABLE `duty_rosta` (
   `end` date DEFAULT NULL,
   `allDay` varchar(4) NOT NULL DEFAULT 'true'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `duty_rosta`
---
-
-INSERT INTO `duty_rosta` (`id`, `entry_id`, `facility_id`, `department_id`, `emp_id`, `schedule_id`, `color`, `duty_date`, `end`, `allDay`) VALUES
-(1, '2020-05-022323', NULL, NULL, '2323', '14', 'd1a110', '2020-05-02', '2020-05-03', 'true'),
-(2, '2020-05-012323', NULL, NULL, '2323', '14', 'd1a110', '2020-05-01', '2020-05-02', 'true'),
-(4, '2020-05-142323', NULL, NULL, '2323', '14', 'd1a110', '2020-05-14', '2020-05-15', 'true'),
-(5, '2020-05-132323', NULL, NULL, '2323', '14', 'd1a110', '2020-05-13', '2020-05-14', 'true'),
-(6, '2020-05-12892181', NULL, NULL, '892181', '14', 'd1a110', '2020-05-12', '2020-05-13', 'true');
 
 -- --------------------------------------------------------
 
@@ -6028,7 +6017,7 @@ ALTER TABLE `district`
 -- AUTO_INCREMENT for table `duty_rosta`
 --
 ALTER TABLE `duty_rosta`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `facility`
