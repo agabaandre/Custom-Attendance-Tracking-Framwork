@@ -96,7 +96,7 @@ class AttendanceModel extends AndreModel{
 			return $rows;
 		}
 		//report
-			public function fetchsums(){	
+			public function fetchReport(){	
 			$month=$this->inputpost('month');
 			$year=$this->inputpost('year');
 			$date_range=$year."-".$month;
