@@ -1,6 +1,6 @@
 <?php 
 
-require_once(__DIR__.'/../../config/dbconfig.php');
+require_once(__DIR__.'/../../config/Dbconfig.php');
 class DbConn extends Dbconfig{
 
 	public function __construct(){
