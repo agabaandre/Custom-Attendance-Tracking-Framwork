@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/kkcoac5/lapl.co.ug/att_track
-    - /bin/cp -R * $DEPLOYPATH
