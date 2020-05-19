@@ -18,7 +18,7 @@ class Employee extends AndreController{
     public function insertEmployee(){
         $employee=$this->inputpost();
         $data['template']='add_employee';
-        $this->EmpData->saveEmployee($employee);
+        $data['msg']=$this->EmpData->saveEmployee($employee);
         $data['dist']=$this->EmpData->getDistricts();
         $data['fac']=$this->EmpData->getFacilities();
         $data['depart']=$this->EmpData->getDeparts();

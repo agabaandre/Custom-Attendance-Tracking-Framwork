@@ -10,7 +10,7 @@ class AndreModel extends DbConn{
 	}
 	public function environment(){
 		//use debug or prod to turn on or off the queries
-		$environment='production';
+		$environment='development';
 	return $environment;
 	}
 	//use for delete, update, insert sql raw queries that dont return result

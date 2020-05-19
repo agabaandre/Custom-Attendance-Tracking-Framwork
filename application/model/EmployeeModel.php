@@ -5,8 +5,13 @@ class EmployeeModel extends AndreModel{
 		parent::__construct();
 	}
 	function saveEmployee($data){
-      return  $query=$this->insert('employee_details',$data);
-    //return $this->notify($query);
+        $query=$this->insert('employee_details',$data);
+        if($this->affected_rows()>1){
+          return $this->inputpost('Surname'). 'Added';
+        }
+        else{
+          return 'Failed';
+        }
     }
 	function viewEmpoyees(){
 		return $this->get('array','select * from employee_details');
@@ -20,6 +25,9 @@ class EmployeeModel extends AndreModel{
        {
        return 'Success';
        }
+       else{
+        return 'Failed';
+       }
     }
     public function viewData($table){
     return	$this->get("array","SELECT * FROM `$table`");
@@ -29,6 +37,9 @@ class EmployeeModel extends AndreModel{
      if($query)
     {
     return 'Success';
+    }
+    else{
+      return 'Failed';
     }
     }
     function updateData($table){
@@ -44,12 +55,19 @@ class EmployeeModel extends AndreModel{
      {
      return 'Success';
      }
+     else{
+       return 'Failed';
+     }
+
      }
     function deleteData($table,$id){
      $query=$this->delete($table,$id);
       if($query)
      {
      return 'Success';
+     }
+     else{
+       return 'Failed';
      }
      }
     public function getFacilities(){

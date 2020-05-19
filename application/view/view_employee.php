@@ -87,7 +87,9 @@
 		        	<div id="">
                       <label>IPPS NUMBER:  <span style="color:red">*</span></label> 
                       <input style="width:100%;" class="form-control" name="emp_id" id="studid" value="<?php echo $row['emp_id'];?>" type="number" readonly>
+					  <input type='hidden' value='<?php echo $id ?>' name='emp_id'>
 					</div>
+
 					<div id="">
                       <label>iHRIS ID:  <span style="color:red"></span></label> 
                       <input style="width:100%;" class="form-control" name="hris_pid" id="ihris_id" value="<?php echo $row['hris_pid'];?>" type="number">
