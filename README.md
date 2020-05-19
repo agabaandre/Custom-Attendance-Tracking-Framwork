@@ -8,7 +8,7 @@ Any contributions are welcome and improvements are welcome because it still has 
 1. launch your application 
 1. username:admin and password:admin (default login username and password)
 
-1. For new accounts, the system default for new accounts is # login
+1. For new accounts, the system default for new accounts is #login
 
 
 
