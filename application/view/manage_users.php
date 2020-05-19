@@ -30,14 +30,14 @@
                       <input class="form-control" name="username" id="title" value="" placeholder="Username" type="text" required>
 				   </div>
                    <div id="">
-					 <label>Default Password is  password</label> 
+					 <label>Default Password your account is  <b>login</b></label> 
                       <input class="form-control" name="password" id="" value="d56b699830e77ba53855679cb1d252da" placeholder="Password" type="hidden" required>
 					</div>
 					<div id="">
 					  <label>User Type: *</label>
                       <select class="form-control" name="usertype" id="type" style="width:100%;">
 					  <?php
-                      $users = array("Administrator"=>"admin", "Supervisor"=>"hr", "Data Manager"=>"data", "No Access Granted"=>"access_0");
+                      $users = array("Administrator"=>"admin", "Supervisor"=>"hr", "Data Manager"=>"data", "Staff"=>"staff", "No Access Granted"=>"access_0");
                       foreach($users as $key => $value) {
                      echo"<option value='$value'>".$key."</option>";
                             }
@@ -126,7 +126,7 @@ $users=$data['users'];
 					  <label>User Type: *</label>
                       <select class="form-control" name="usertype" id="type" style="width:100%;">
 					  <?php
-                      $users = array("Administrator"=>"admin", "Supervisor"=>"hr", "Data Manager"=>"data", "No Access Granted"=>"access_0");
+                      $users = array("Administrator"=>"admin", "Supervisor"=>"hr", "Staff"=>"staff", "Data Manager"=>"data", "No Access Granted"=>"access_0");
                       foreach($users as $key => $value) {
 						  $selected="selected";?>
                     <option value="<?php echo $select_op=$value; ?>"<?php if ($select_op==$active_op){echo "selected";}?>><?php  echo $key; ?>
