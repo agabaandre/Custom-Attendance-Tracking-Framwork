@@ -150,9 +150,10 @@
 				   </div>
 				   	   <div id="">
                       <label style="width:100%;">Department: <span style="color:red">*</span></label> 
-                       <select name="Department" class="form-control select2" style="width:100%;">
+					   <select name="Department" class="form-control select2" style="width:100%;">
+					   <option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
 						 <?php foreach($departmentdata as $list2){ ?>
-							<option value="<?php echo '%'; ?>"><?php  echo 'All'; ?></option>
+							
 							  <option value="<?php echo $active_op=$list2['name']; ?>"<?php if ($department==$active_op){echo "selected";}?>><?php  echo $list2['name']; ?>
 							  </option>
 						 <?php } ?>
