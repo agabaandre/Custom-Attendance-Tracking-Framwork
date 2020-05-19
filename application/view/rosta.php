@@ -76,8 +76,15 @@
 							    <th class="cell name">Name</th>
 							     <th class="cell">Job</th>
 							<?php
+							if (!empty($_POST['month']))
+							{
+									$month=$_POST['month'];
+									$year=$_POST['year'];
+							}
+							else{
 									$month=date('m');
 									$year=date('Y');
+							}
 								$monthdays = cal_days_in_month(CAL_GREGORIAN, $month, $year); // get days in a month
 								for($i=1;$i<($monthdays+1);$i++)
 								{
