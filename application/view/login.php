@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="">
     <meta name="author" content="Agaba Andrew">
-  <title>AAT login</title>
+  <title>Employee Scheduling System</title>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/cmxform.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/lib/validationEngine.jquery.css">
@@ -52,7 +52,7 @@
  <div class="col-md-4">
  <div class="panel panel-default">
         <div class="panel-heading">
-           <p style="font-weight:bold; text-align:center; font-size:1.5em;"> ATT Login</p>
+           <p style="font-weight:bold; text-align:center; font-size:1.5em;"> Login</p>
                   </div>
         <div class="panel-body">
             </form>
@@ -91,7 +91,6 @@ echo'<div class="alert alert-danger alert-dismissable">
 </table>
 </form>
 <footer class="main-footer"style="background:url(images/header_bg.png) 0 0 repeat-x; color:white;background-color:#C02424; font-size:10px;">
-        <strong>Copyright &copy; Agaba Andrew <?php echo date("Y");?> <a href="<?php echo base_url(); ?>assets/http://takenet.net" target="blank"> </a></strong> All rights reserved <version style="float:right;">Employee Tracking System</version>
 </footer>
 </div>
  </div>

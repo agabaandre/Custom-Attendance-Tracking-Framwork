@@ -4,7 +4,7 @@
 
       <header class="main-header static-top" >
         <a href="" class="logo"  style="background:#7b9f0e url(<?php echo base_url(); ?>.'assets/images/header_title.png') 0 0 repeat-x; color:white;">
-          <span class="logo-lg"><b>ATT</b></span>
+          <span class="logo-lg"><b>ESS</b></span>
         </a>
         <nav class="navbar navbar-static-top" role="navigation" style="background-image:url('assets/images/header_bg.png') 0 0; background-color:#7b9f0e; color:white;">
           <a href="#" class="" data-toggle="offcanvas">
