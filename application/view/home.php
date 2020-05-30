@@ -4,7 +4,7 @@
                  </ul>
 		  </div>                              
                <div class="box-header with-border">
-                 <h5 class="box-title"><strong>Attendance Tracking System</strong></h5>
+                 <h5 class="box-title"><strong>Employee Scheduling System</strong></h5>
                 </div>
         <div class="col-md-12">
            <?php $widgets=$data['widgets'];
