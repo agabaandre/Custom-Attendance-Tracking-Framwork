@@ -123,12 +123,12 @@
 								$d="0".$d;
 							}
 									?>
-							<input type="text" style="padding:6px; text-align: center; border-radius:4px; border:1px #f1ecec solid;" class="update duty" id="<?php echo $year."-".$month."-".$d.$singleduty['emp_id']; ?>"  day="<?php echo $i; ?>" pid="<?php echo $singleduty['emp_id']; ?>"
+							<input type="text" style="padding:4px; text-align: center; border-radius:4px; border:1px #f1ecec solid;" class="update duty" id="<?php echo $year."-".$month."-".$d.$singleduty['emp_id']; ?>"  day="<?php echo $i; ?>" pid="<?php echo $singleduty['emp_id']; ?>"
 							pattern="[A-Za-z]+" size="1px" maxlength="1" title="Letters only for Duty" value="<?php echo $matches[$singleduty['day'.$i].$singleduty['emp_id']]; ?>">
 								<?php }
 								else{
 									?>
-							<input type="text" size="1px"  class="new duty" id="<?php echo $singleduty['emp_id']; ?>"  day="<?php echo $i; ?>" style="padding:6px; text-align: center; border-radius:4px; border:1px #f1ecec solid;"  pattern="[A-Za-z]+" maxlength="1" pid="<?php echo $singleduty['emp_id']; ?>" name='day<?php echo $no; ?>' title="Letters only for Duty" >
+							<input type="text" size="1px"  class="new duty" id="<?php echo $singleduty['emp_id']; ?>"  day="<?php echo $i; ?>" style="padding:4px; text-align: center; border-radius:4px; border:1px #f1ecec solid;"  pattern="[A-Za-z]+" maxlength="1" pid="<?php echo $singleduty['emp_id']; ?>" name='day<?php echo $no; ?>' title="Letters only for Duty" >
 							<?php 
 								}
 								;?>
