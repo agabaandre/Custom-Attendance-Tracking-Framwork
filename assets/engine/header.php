@@ -1,12 +1,3 @@
-<?php
-
-if (empty($_SESSION['uuid']))
-	{
-		$baseurl= base_url();
-		header("Location:$baseurl");
-		exit();
-	}
-  ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
