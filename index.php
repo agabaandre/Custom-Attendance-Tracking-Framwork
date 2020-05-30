@@ -1,9 +1,5 @@
 <?php 
-		session_start();
-	if ($_SESSION['uuid']='')
-	{
-		$this->load_view('login','Logged Out');
-	}
+session_start();
 		ini_set('error_reporting', E_ALL);
 		//use true or false
 		ini_set('display_errors', 'false'); 
