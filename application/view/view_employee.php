@@ -14,7 +14,7 @@
                                       </div>';
                                             }
   ?>
-<hr style="border:1px solid rgb(140, 141, 137);">
+<hr>
 	 <table id="mydata" class="table table-bordered table-hover table-responsive">
                     <thead>
                       <tr>
