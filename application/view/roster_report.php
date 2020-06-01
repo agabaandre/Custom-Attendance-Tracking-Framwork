@@ -118,7 +118,7 @@
 							foreach($duties as $singleduty) { 
 								$no++;
 								?>
-						   <tr>
+						   <tr style="padding:4px;">
 							<td><?php echo $no;?>
 							</td>
 							<td><?php echo $singleduty['fullname'];?></td>

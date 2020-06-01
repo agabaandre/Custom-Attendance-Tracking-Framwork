@@ -44,7 +44,7 @@ function initArgument($uri){
 		call_user_func_array(array(new $controller_name, $function_name), $args);
 	}
 	else{
-		call_user_func_array(array('application/views/error404.php'));
+		include('application/views/error404.php');
 	}
 }
 render();
